@@ -1,0 +1,151 @@
+header {
+    width: 100%;
+    height: 152px;
+    font-family: 'Impact, Haettenschweiler, Arial Narrow Bold', sans-serif;
+    background-color: black;
+    box-shadow: 3px 3px 15px black;
+    margin: 0px 0px 0px 0px;
+    opacity: 0.85;
+    border-bottom: solid 0.2px rgb(56, 56, 56);
+    text-align: center;
+  }
+ 
+  /* ------------header------------------- */
+  .index-nav {
+    display: inline-block;
+    margin-right: 56px;
+    margin-top: 0px;
+    line-height: 69px;
+    list-style: none;
+    text-align: center;
+    vertical-align: bottom;
+    z-index: 1;
+  }
+  
+  .index-nav>li {
+    grid-column: 4/ span 1;
+    margin-top: 0px;
+    cursor: pointer;
+    margin-right: 1px;
+    float: right;
+    text-decoration: none;
+    z-index: 4;
+  }
+  .profile-over {
+    width: 150px;
+    height: 69px;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-family: 'arial';
+  }
+  a.profile,
+  a.in,
+  a.out,
+  a.logout,
+  a.message {
+    width: 150px;
+    height: 69px;
+    background-color: rgba(107, 102, 102, 0.3);
+    transition: background-color 1s;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-family: 'arial';
+  }
+  
+  a.profile:hover,
+  a.in:hover,
+  a.out:hover,
+  a.logout:hover,
+  a.message:hover {
+    background-color: rgba(126, 153, 175, 0.4);
+    border-bottom: 1px solid rgb(207, 202, 202);
+  }
+  #log-out :hover {
+    color: greenyellow;}
+    .pic {
+    width: 120px;
+    height: 69px;
+    grid-column: 1/ span 1;
+  }
+  
+  .logout {color: white;}
+  
+  .index-title {
+    line-height: 70px;
+    font-family: 'Bauhaus93, sans-serif';
+    color: rgb(245, 245, 245);
+    font-size: 2.2vw;
+    letter-spacing: 1px;
+    grid-column: 2/ span 1;
+    text-align: left;
+    height: 70px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .photo-admin {
+    padding: 1px;
+    margin: 0px auto;
+    margin-top: 25px;
+    width: 284px;
+    height: 25px;
+    letter-spacing: 3px;
+  }.square {
+    margin-top: -7px;
+    font-size: 17px;
+  }
+  .dropdown-content {
+    margin-top: -16px;
+    background-color: rgb(39, 38, 38);
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 14px;
+    text-align: auto;
+    display: none;
+    letter-spacing: 2px;
+    font-family: 'arial';
+    transition: display 2s;
+    z-index: 1;
+  }
+  .dropdown-content a {
+    margin: auto;
+    text-align: center;
+    color: whitesmoke;
+    line-height: 42px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 1s;
+    height: 40px;
+    z-index: 1;
+    border-bottom: 1px solid whitesmoke
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgba(126, 153, 175, 0.4)
+  }
+  
+  .profile-over:hover .dropdown-content {
+    display: block;
+  }
+  .index-container {
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 141px 25% 10% 61%;
+    height: 70px;
+    width: 100%;
+    justify-content: start;
+    align-content: start;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 3;
+  }
