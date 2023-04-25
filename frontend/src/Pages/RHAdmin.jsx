@@ -1,5 +1,7 @@
 import Button from '@mui/material/Button';
 import React from 'react';
+import { Link, NavLink} from "react-router-dom";
+import SendIcon from '@mui/icons-material/Send';
 const RHAdmin = () => {
   return (
       <div>
@@ -12,21 +14,25 @@ const RHAdmin = () => {
               <span style={{fontSize: '23px', fontFamily: '"Bauhaus93'}}>Search 
                 <input type="text" id="search" onkeyup="crunchy(this.value)" name="search" className="form-create no-focus-outline" placeholder="Search" minLength={3} style={{width: '300px', marginLeft: '7px', height: '34px', fontSize: '15px', borderRadius: '10px black'}} title="Search" />
                 <span id="container" style={{position: 'absolute', zIndex: 3, backgroundColor: 'white', color: 'black', padding: '4px', borderRadius: '4px', fontSize: '13px', display: 'none', marginTop: '20px'}} />
-                <input type="submit" name="shows" defaultValue="Show" className="btn btn-purple" style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'solid 1px #0a0a0a'}} />
-                <input type="reset" defaultValue="Reset" className="btn btn-success" style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'none', backgroundColor: 'olivedrab'}} /> 
+
+                <input type="submit" defaultValue="Show" className="btn btn-purple"  name="shows"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'solid 1px #0a0a0a'}} />
+                <input  type="reset" defaultValue="Reset" className="btn btn-success"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'none',backgroundColor:'olivedrab'}}/>
                 <button className="btn btn-secondary" style={{marginLeft: '30px', height: '40px', fontSize: '15px'}} onclick="javascript:window.print();">
                   <span style={{fontSize: '20px', letterSpacing: '7px'}}>⎙</span> Print 
                 </button>
-                <div className="btn-group" style={{marginLeft: '120px'}}>
+
+                <div className="btn-group" style={{marginLeft: '820px',marginTop:'-6.5%'}}>
                   <button type="button" className="btn btn-light">Human Resources</button>
                   <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span className="visually-hidden">Toggle Dropdown</span></button>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">RH Admin</a></li>
-                    <li><a className="dropdown-item" href="#">RH Report</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="#">Home</a></li>
+                    <li> <NavLink className="dropdown-item" to="/RHAdmin">RH Admin</NavLink></li>
+                    <li> <NavLink className="dropdown-item" to="/RHReport">RH Report </NavLink> </li>
+                    <li> <hr className="dropdown-divider" /></li>
+                    <li> <NavLink className="dropdown-item" to="/">Home</NavLink> </li>
                   </ul>
                 </div>
+
+
               </span>                  
             </form>
           </div>
@@ -116,7 +122,9 @@ const RHAdmin = () => {
               </div>
               <br />
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '2%', marginLeft: '3%'}}>
-                <button type="submit" className="btn btn-purple " style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%'}}>SAVE</button>
+                {/* <button type="submit" className="btn btn-purple " style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%'}}>SAVE</button> */}
+                <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%',backgroundColor: 'rgb(88, 3, 88)'}} >SEND</Button>
+
               </div> 
             </div>
           </div> 

@@ -2,6 +2,12 @@ import Button from '@mui/material/Button';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+
+
+
 
 const AgentManage = () => {
     return (
@@ -37,7 +43,7 @@ const AgentManage = () => {
                     </div>
                   </form>
                 </div>
-                <div className="frame2" style={{marginLeft: '120px'}}> 
+                <div className="frame2" style={{marginLeft: '152px'}}> 
                   <form action="/agent_manage.php" method="post" name="form-create">
                     <div className="form-floating" style={{margin: '12px'}}>
                       <input type="tel" name="phone" placeholder="Height Phone Numbers Required" minLength={8} pattern="[0-9]{8}" className="form-control  purple-border shadow-effect" id="floatingID" />
@@ -90,45 +96,53 @@ const AgentManage = () => {
                   </form> 
                 </div>
               </div>    
-              <br /><br />                 
-              <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '5px', marginBottom: '2%', marginLeft: '0%'}} />
+              <br /><br />    
+              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
+             
+              {/* <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
               <span style={{width: 'auto', fontWeight: 'normal'}} /> 
               <br /><br /> 
             </div>
           </div>
         </div>
+
         <div className="main-manage2" style={{marginTop: '5%'}}>
           <div className="manage">
             <div className="managetitle2">Modify Agent<a className="list" name="agent" style={{fontSize: '17px', color: 'olivedrab', height: '23px', marginLeft: '5px', lineHeight: '24px', fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif', float: 'right', marginRight: '20px'}} href="agent_list.php">♻ Agent List</a></div>
             <div className="manageform">
               <div className="form-frame">
-                <div className="frame1" style={{marginLeft: '-10px'}}> 
+                <div className="frame1" style={{marginLeft: '10px'}}> 
                   <form action="/agent_manage.php" method="post" onsubmit="return validateForm()">   
-                    <div className="form-floating" style={{margin: '12px', marginLeft: '11px', marginBottom: '2px', display: 'inline-block'}}>
-                      <input type="number" name="search-id" id="search-id" defaultValue placeholder="User ID Numeric Value" minLength={6} title="Minimum 6 Numeric Characters" className="form-control purple-border shadow-effect" />
-                      <input type="hidden" name="hiddenID" defaultValue />   
-                      <label htmlFor="floatingID">Search ID</label>  
-                    </div>
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="agent-search" defaultValue="Search" className="btn btn-success but" style={{marginLeft: '-10%', marginTop: '14%', backgroundColor: 'olivedrab', borderColor: 'olivedrab'}} />
-                    </div> 
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="delete" defaultValue="Delete" className="btn btn-success but" style={{marginLeft: '8%', marginTop: '14%', backgroundColor: 'black', borderColor: 'black'}} />
-                    </div>
+                  <div style={{display: 'flex',alignItems: 'center'}}>
+    <div className="form-floating" style={{margin: '12px'}}>
+    <input type="number" name="search-id" id="search-id" defaultValue placeholder="User ID Numeric Value" minLength={6} title="Minimum 6 Numeric Characters" className="form-control purple-border shadow-effect" />
+    <input type="hidden" name="hiddenID" defaultValue />   
+    <label htmlFor="floatingID">Search ID</label>  
+  </div>
+
+  <div style={{margin: '12px'}}>
+    <Button variant="contained" startIcon={<PersonSearchIcon/>} style={{backgroundColor:'olivedrab'}} type="submit" name="agent-search" defaultValue="Search">Search</Button>
+  </div>
+
+  <div style={{margin: '12px'}}>
+  <Button variant="outlined" color="secondary" endIcon={<DeleteIcon />} type="submit" name="delete" defaultValue="Delete">Delete</Button>
+  </div>
+</div>
+
                     <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
                   </form>
                   <form action="/agent_manage.php" method="post">     
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-firstName" defaultValue placeholder="User firstName" className="form-control  purple-border shadow-effect" id="floatingID" required />
-                      <input type="hidden" name="hiddenID" defaultValue />  
+                      <input type="text" name="update-firstName" placeholder="User firstName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="hidden" name="hiddenID"  />  
                       <label htmlFor="floatingID">FirstName</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="email" name="update-email" defaultValue placeholder="User Email" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="email" name="update-email" placeholder="User Email" className="form-control  purple-border shadow-effect" id="floatingID" required />
                       <label htmlFor="floatingID">LastName </label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-lastName" defaultValue placeholder="User lastName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" name="update-lastName" placeholder="User lastName" className="form-control  purple-border shadow-effect" id="floatingID" required />
                       <label htmlFor="floatingID">Email </label> 
                     </div>   
                     <div className="form-floating" style={{margin: '12px'}}>
@@ -185,14 +199,17 @@ const AgentManage = () => {
                   </form>
                 </div>
               </div> 
-              <br /><br />   
-              <input type="submit" name="update-user" defaultValue="MODIFY" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '5px', marginBottom: '2%', marginLeft: '6%'}} />
-              <span style={{color: 'olivedrab', fontSize: '14px'}} />   
+                 <br /><br /> 
+                 <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
+                
+              {/* <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
+              <span style={{width: 'auto', fontWeight: 'normal'}} /> 
               <br /><br /> 
             </div>
-          </div>        
+         
+          </div>     
         </div>
-        <br /><br /><br /><br /> 
+        <br /><br /><br /><br />
         <Footer></Footer>   
         </div>
     );

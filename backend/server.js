@@ -1,5 +1,8 @@
 import express from 'express' 
 import mysql from 'mysql'
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
 
 const app = express()
 // app.use(cors())
@@ -13,6 +16,35 @@ const db = mysql.createConnection({
 // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password_ BY 'Chaimamysql123@'
 
 app.use(express.json())
+
+// --------------------------------------------------------------------------------------------------------
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
+
+// Routes
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  
+  // Check if email and password are valid
+  // You would typically check these against a database
+  if (email === 'example@example.com' && password === 'password') {
+    // Return a success response
+    res.json({ success: true });
+  } else {
+    // Return an error response
+    res.status(401).json({ error: 'Invalid credentials' });
+  }
+});
+
+// Start server
+app.listen(3001, () => {
+  console.log('Server started on port 3001');
+});
+// --------------------------------------------------------------------------------------
+
+
+
 
 // le message affiché dans la page principale 
   app.get("/", (req, res)=>{

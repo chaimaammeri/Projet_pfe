@@ -2,6 +2,11 @@ import Button from '@mui/material/Button';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+ 
+
 
 const DeskManage = () => {
     return (
@@ -66,8 +71,9 @@ const DeskManage = () => {
                   </form> 
                 </div>
               </div>    
-              <br /><br />                 
-              <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '2%', marginLeft: '6%'}} />
+              <br /><br />  
+              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>               
+              {/* <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
               <span style={{width: 'auto', fontWeight: 'normal'}} />                                            
               <br />    <br />  
             </div>
@@ -78,42 +84,49 @@ const DeskManage = () => {
             <div className="managetitle2">Modify Desk<span style={{color: 'olivedrab', float: 'right', margin: 'auto', fontSize: '16px', marginRight: '22px', fontWeight: 'bold', cursor: 'pointer', lineHeight: '22px', display: 'inline-block', zIndex: 3}} onclick="notepad()">❐&nbsp;Notepad +</span></div>
             <div className="manageform">
               <div className="form-frame">
-                <div className="frame1" style={{marginLeft: '0px'}}> 
+                <div className="frame1" style={{marginLeft: '10px'}}> 
                   <form action="/desk_manage.php" method="post" onsubmit="return validateForm()">
-                    <div className="form-floating mb-3" style={{display: 'inline-block', margin: '12px', marginLeft: '9px'}}>
-                      <select type="select" id="desk" name="desk-name" title="User Desk" className="form-select shadow-effect purple-border" style={{width: '300px'}}>
-                        <option selected data-search />
-                        <option value="NA">NA</option><option value="Renault" data-search="renault">Renault</option>
-                        <option value="Nissan" data-search="nissan">Nissan</option>
-                        <option value="Saipem" data-search="spm">Saipem</option>s
-                        <option value="Convatec" data-search="cvt">Convatec</option>
-                        <option value="Philips" data-search="philips">Philips</option>
-                        <option value="Sonova" data-search="sonova">Sonova</option>
-                        <option value="Hanes" data-search="hei">Hanes</option>
-                        <option value="Xpo" data-search="xpo">Xpo</option>
-                        <option value="Gxo" data-search="gxo">Gxo</option>
-                        <option value="Mylan" data-search="mylan">Mylan</option>
-                        <option value="Servier" data-search="servier">Servier</option> 
-                      </select>
-                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>Search Desk </label>
-                      <input type="hidden" id="desk_hidden" defaultValue />  
-                    </div>   
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="agent-search" defaultValue="Search" className="btn btn-success but" style={{marginLeft: '-10%', marginTop: '-5%', backgroundColor: 'olivedrab', borderColor: 'olivedrab'}} /> 
-                    </div> 
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="delete" defaultValue="Delete" className="btn btn-success but" style={{marginLeft: '8%', marginTop: '-5%', backgroundColor: 'black', borderColor: 'black'}} /> 
-                    </div>
-                    <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
-                  </form>
+                    
+<div style={{display: 'flex', alignItems: 'center'}}>
+  <div className="form-floating mb-3" style={{margin: '12px'}}>
+    <select type="select" id="desk" name="desk-name" title="User Desk" className="form-select shadow-effect purple-border" style={{width: '300px'}}>
+      <option selected data-search />
+      <option value="NA">NA</option>
+      <option value="Renault" data-search="renault">Renault</option>
+      <option value="Nissan" data-search="nissan">Nissan</option>
+      <option value="Saipem" data-search="spm">Saipem</option>
+      <option value="Convatec" data-search="cvt">Convatec</option>
+      <option value="Philips" data-search="philips">Philips</option>
+      <option value="Sonova" data-search="sonova">Sonova</option>
+      <option value="Hanes" data-search="hei">Hanes</option>
+      <option value="Xpo" data-search="xpo">Xpo</option>
+      <option value="Gxo" data-search="gxo">Gxo</option>
+      <option value="Mylan" data-search="mylan">Mylan</option>
+      <option value="Servier" data-search="servier">Servier</option> 
+    </select>
+    <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>Search Desk </label>
+    <input type="hidden" id="desk_hidden" defaultValue />  
+  </div>   
+
+
+  <div style={{margin: '12px'}}>
+    <Button variant="contained"  style={{backgroundColor:'olivedrab'}} startIcon={<ManageSearchIcon/>} type="submit" name="agent-search" defaultValue="Search">Search</Button>
+  </div>
+
+  <div style={{margin: '12px'}}>
+  <Button variant="outlined" color="secondary" endIcon={<DeleteIcon />} type="submit" name="delete" defaultValue="Delete">Delete</Button>
+  </div>
+   </div>
+  <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
+</form>
                   <form action="/desk_manage.php" method="post" onsubmit="return validateForm()">                                                                                                    
                     <div className="form-floating" style={{margin: '12px', marginTop: '-4px'}}>
-                      <input type="text" name="desks-name" id="desks-name" defaultValue placeholder="Desk acronyme how it appear in AWS!" className="form-control purple-border shadow-effect" />
-                      <input type="hidden" name="hidden-desk" defaultValue />
+                      <input type="text" name="desks-name" id="desks-name" placeholder="Desk acronyme how it appear in AWS!" className="form-control purple-border shadow-effect" />
+                      <input type="hidden" name="hidden-desk"  />
                       <label htmlFor="floatingID">Desk Name :</label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="desk_acronyme_update" id="desk_acronyme_update" defaultValue placeholder="Desk acronyme how it appear in AWS!" className="form-control purple-border shadow-effect" />
+                      <input type="text" name="desk_acronyme_update" id="desk_acronyme_update"  placeholder="Desk acronyme how it appear in AWS!" className="form-control purple-border shadow-effect" />
                       <label htmlFor="floatingID">Desk Acronyme :</label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
@@ -129,7 +142,7 @@ const DeskManage = () => {
                     </div>  
                     <div className="form-floating" style={{margin: '12px'}}>
                       <textarea type="textarea" title="desk_language" id="case_question_update" name="case_question_update" className="form-control shadow-effect purple-border;" wrap="soft" placeholder="&quot;q1&quot;:&quot;Does the agent ....&quot;, &quot;q2&quot;:..." defaultValue={""} />
-                      <label htmlFor="floatingTextarea2">Case Questions : <br /> <span style={{fontSize: '10px'}}>&amp;french".</span> </label>
+                      <label htmlFor="floatingTextarea2">Case Questions : <br /> <span style={{fontSize: '10px'}}>"q1":"Does the agent ....", "q2":...</span> </label>
                     </div>                                               
                   </form>
                 </div>     
@@ -163,8 +176,10 @@ const DeskManage = () => {
                 </div>
               </div> 
               <br /><br /> 
-              <input type="submit" name="update-desk" defaultValue="MODIFY" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '1%'}} />
-              <span style={{color: 'olivedrab', fontSize: '14px'}}> </span>
+              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
+
+              {/* <input type="submit" name="update-user" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
+              <span style={{color: 'olivedrab', fontSize: '14px'}} />
               <br /><br /> 
             </div>
           </div>       

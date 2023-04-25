@@ -7,6 +7,8 @@ import AdminManage from './Pages/AdminManage';
 import AgentManage from './Pages/AgentManage';
 import DeskManage from './Pages/DeskManage';
 import BotManage from './Pages/BotManage';
+import Login from './Pages/Login'
+
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
             <Routes>
 
                 <Route path='/' element={<Home></Home>} />
+                <Route path='/Login' element={<Login></Login>} />
                 <Route path='/RHAdmin' element={<RHAdmin></RHAdmin>} />
                 <Route path='/RHReport' element={<RHReport></RHReport>} />
 

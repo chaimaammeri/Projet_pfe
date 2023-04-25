@@ -2,6 +2,10 @@ import Button from '@mui/material/Button';
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+
 
 const AdminManage = () => {
     return (
@@ -100,48 +104,56 @@ const AdminManage = () => {
                 </div>  
               </div>
               <br /><br /> 
-              <input type="submit" name="update-user" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} />
+              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
+
+              {/* <input type="submit" name="update-user" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
               <span style={{color: 'olivedrab', fontSize: '14px'}} />
               <br /><br /> 
             </div>
           </div>
         </div>
+
         <div className="main-manage2" style={{marginTop: '5%'}}> 
-          <div className="manage">
+          <div className="manage" >
             <div className="managetitle2">Modify User<span style={{color: 'olivedrab', float: 'right', margin: 'auto', fontSize: '16px', marginRight: '22px', fontWeight: 'bold', cursor: 'pointer', lineHeight: '22px', display: 'inline-block', zIndex: 3}} onclick="notepad()">❐&nbsp;Notepad +</span></div>
             <div className="manageform"> 
-              <div className="form-frame"> 
-                <div className="frame1" style={{marginLeft: '0px'}}> 
+              <div className="form-frame" style={{marginLeft:'30px',}}> 
+                <div className="frame1" style={{marginLeft: '10px'}}> 
                   <form action="/admin-manage.php" method="post" onsubmit="validateForm()">    
-                    <div className="form-floating" style={{margin: '12px', marginLeft: '5px', marginBottom: '2px', display: 'inline-block'}}>
-                      <input type="number" name="search-id" id="search-id" defaultValue placeholder="User ID Numeric Value" minLength={6} title="Minimimum 6 Numric Characters" className="form-control purple-border shadow-effect" />
-                      <input type="hidden" name="hiddenID" defaultValue />   
-                      <label htmlFor="floatingID">Search ID</label> 
-                    </div>
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="agent-search" defaultValue="Search" className="btn btn-success but" style={{marginLeft: '-10%', marginTop: '14%', backgroundColor: 'olivedrab', borderColor: 'olivedrab'}} />
-                    </div> 
-                    <div style={{display: 'inline-block'}}>
-                      <input type="submit" name="delete" defaultValue="Delete" className="btn btn-success but" style={{marginLeft: '8%', marginTop: '14%', backgroundColor: 'black', borderColor: 'black'}} />
-                    </div>
-                    <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
-                  </form>  
-                  <form action="/admin-manage.php" method="post">
+                    
+  <div style={{display: 'flex',alignItems: 'center'}}>
+    <div className="form-floating" style={{margin: '12px'}}>
+    <input type="number" name="search-id" id="search-id" defaultValue placeholder="User ID Numeric Value" minLength={6} title="Minimum 6 Numeric Characters" className="form-control purple-border shadow-effect" />
+    <input type="hidden" name="hiddenID" defaultValue />   
+    <label htmlFor="floatingID">Search ID</label>  
+  </div>
+
+  <div style={{margin: '12px'}}>
+    <Button variant="contained" style={{backgroundColor:'olivedrab'}} startIcon={<PersonSearchIcon/>} type="submit" name="agent-search" defaultValue="Search">Search</Button>
+  </div>
+  
+  <div style={{margin: '12px'}}>
+    <Button variant="outlined" color="secondary" endIcon={<DeleteIcon />} type="submit" name="delete" defaultValue="Delete">Delete</Button>
+  </div>
+</div>
+<span style={{color: 'olivedrab', fontSize: '14px'}} /> 
+  </form>  
+    <form action="/admin-manage.php" method="post">
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-firstName" defaultValue placeholder="User firstName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" name="update-firstName"  placeholder="User firstName" className="form-control  purple-border shadow-effect" id="floatingID" required />
                       <input type="hidden" name="hiddenID" defaultValue />  
                       <label htmlFor="floatingID">FirstName</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="email" name="update-email" defaultValue placeholder="User Email" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="email" name="update-email"  placeholder="User Email" className="form-control  purple-border shadow-effect" id="floatingID" required />
                       <label htmlFor="floatingID">LastName </label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-lastName" defaultValue placeholder="User lastName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" name="update-lastName" placeholder="User lastName" className="form-control  purple-border shadow-effect" id="floatingID" required />
                       <label htmlFor="floatingID">Email </label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="tel" name="update-phone" defaultValue placeholder="Height Phone Numbers Required" className="form-control  purple-border shadow-effect" id="floatingID" />
+                      <input type="tel" name="update-phone" placeholder="Height Phone Numbers Required" className="form-control  purple-border shadow-effect" id="floatingID" />
                       <span style={{color: 'olivedrab', fontSize: '14px'}}></span> 
                       <label htmlFor="floatingID">Phone</label> 
                     </div> 
@@ -149,11 +161,11 @@ const AdminManage = () => {
                 </div>
                 <div className="frame2" style={{marginLeft: '152px'}}> 
                   <div className="form-floating" style={{margin: '12px'}}>
-                    <input type="password" name="update-password" title="Password title" placeholder="minimum 8 charactres with alphanueric" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" defaultValue className="form-control purple-border shadow-effect" id="floatingID" />
+                    <input type="password" name="update-password" title="Password title" placeholder="minimum 8 charactres with alphanueric" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  className="form-control purple-border shadow-effect" id="floatingID" />
                     <label htmlFor="floatingID">Password</label>
                   </div>
                   <div className="form-floating mb-3" style={{margin: '12px'}}>
-                    <select type="select" name="update-desk" title="User Desk" id="update-desk" className="form-select shadow-effect purple-border" onchange="langSelect(this.id,&quot;lang&quot;)">
+                    <select type="select" name="update-desk" title="User Desk" id="update-desk" className="form-select shadow-effect purple-border" style={{width: '300px'}} onchange="langSelect(this.id,&quot;lang&quot;)">
                       <option data-search />
                       <option value="All">All</option>
                       <option value="Renault" data-search="renault">Renault</option>
@@ -202,7 +214,8 @@ const AdminManage = () => {
                 </div>
               </div>
               <br /><br />  
-              <input type="submit" name="update-user" defaultValue="MODIFY" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} />&nbsp;
+              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
+              {/* <input type="submit" name="update-user" defaultValue="MODIFY" className="btn btn-purple " id="floatingID" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
               <span style={{color: 'olivedrab', fontSize: '14px'}}></span>
               <br /><br /> 
             </div> 

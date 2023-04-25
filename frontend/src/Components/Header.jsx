@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, NavLink} from "react-router-dom";
 import './Header.css'
+import logo from "../Img/logo.bmp"
 
 const Header = () => {
     return (
       <div>
        <header className="index-container">
-        <meta charSet="utf-8" />
-        <link rel="icon" href="./medias/photos/DXC_LOGO.jpg" />
-        <img className="pic" src="C:\Users\chaim_mv3xy21\OneDrive\Images\img\DXC Logo.bmp" />
+        {/* <link rel="icon" href="./medias/photos/DXC_LOGO.jpg" /> */}
+        <img className="pic" src={logo} alt='' />
         <div className="index-title">DXC WEB PORTAL</div>
         <div className="photo-admin" style={{color: 'white'}}>    
           <div className="square" id="date">03-03-2023 12:05:12</div> 
@@ -142,3 +142,4 @@ const Header = () => {
 }
 
 export default Header;
+

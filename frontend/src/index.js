@@ -9,12 +9,17 @@ import AdminManage from './Pages/AdminManage';
 import AgentManage from './Pages/AgentManage';
 import DeskManage from './Pages/DeskManage';
 import BotManage from './Pages/BotManage';
+import { Login } from './Pages/Login';
 
 const router = createBrowserRouter([
   { path: "/",
     element: <Home></Home>,
     errorElement: <h1>Sorry .......</h1>,
-  },
+},
+
+  { path: "/login",
+  element: <Login></Login>, 
+},
 
   { path: "/RHAdmin",
   element: <RHAdmin></RHAdmin>, 
