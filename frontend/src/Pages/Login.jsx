@@ -1,17 +1,26 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import * as React from 'react'; 
 import Button from '@mui/material/Button';
+import { Link} from "react-router-dom";
+import logo from "../Img/logo.bmp"
+import Footer from '../Components/Footer';
+import axios from 'axios';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// import LoginSide from './LoginSide';
+
+
+const theme = createTheme();
 
 function Copyright(props) {
 return (
@@ -22,62 +31,67 @@ DXC Technology
 </Link>{' '}
 {new Date().getFullYear()}.
 </Typography>
-);
+);}
+
+const Login = () => {
+  const [inputs, setInputs] = useState({
+    email: "" ,
+    password: "" ,
+  })
+
+const [err, setError] = useState(null);
+
+const navigate = useNavigate();
+
+//  at the beginning the 'email' and he 'password'  going to be empty but whenever we change our inputs here we are going to set our states again
+const handleChange = (e) => {
+  setInputs ((prev) => ({ ...prev, [e.target.name]: e.target.value}))
 }
 
-const handleSubmit = async (event) => {
-event.preventDefault();
-const data = new FormData(event.currentTarget);
-const { email, password } = Object.fromEntries(data.entries());
-
-try {
-const response = await fetch('http://localhost:3000/login', {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({ email, password })
-});
-if (response.ok) {
-  // Redirect to home page or dashboard
-  console.log('Login successful');
-} else {
-  // Display error message
-  const data = await response.json();
-  console.log(data.error);
-}
-} catch (error) {
-  console.log(error);
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  try {
+    await axios.post("/Auth/login", inputs)
+    navigate("/")
+  }catch (err) {
+    setError(err.response.data)
   }
-  };
-  
-  // const theme = createTheme();
-  
-  // export default function LogIn() {
-  // const handleSubmit = (event) => {
-  // event.preventDefault();
-  // const data = new FormData(event.currentTarget);
-  // console.log({email: data.get('email'),password: data.get('password'),});
-  // };
-  const theme = createTheme();
-  const Login = () => {
+}
+
   return (
-  <ThemeProvider theme={theme}>
-  <Container component="main" maxWidth="xs">
-  <CssBaseline />
-  <Box sx={{ marginTop: 8,display: 'flex',flexDirection: 'column', alignItems: 'center' }}>
-  <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}><LockOutlinedIcon /></Avatar>
-  <Typography component="h1" variant="h5"> Log in </Typography>
-  <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-  <TextField margin="normal" required fullWidth id="email" label="Email Address" name="email" autoComplete="email" autoFocus className='shadow-effect purple-border' />
-  <TextField margin="normal" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password" className='shadow-effect purple-border' />
-  <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-  <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}> LOG IN </Button>
-  </Box>
-  </Box>
-  <Box sx={{ mt: 8, mb: 4 }}>
-  <Copyright />
-  </Box>
-  </Container>
-  </ThemeProvider>
+ <div>
+    <header className="index-container">
+        <img className="pic" src={logo} alt='' />
+        <div className="index-title">DXC WEB PORTAL</div>
+        <div className="photo-admin" style={{color: 'white',marginLeft:"600px"}}>    
+          <div className="square" id="date">03-03-2023 12:05:12</div> 
+        </div>
+    </header>
+   <br></br>
+   {/* <LoginSide></LoginSide> */}
+   <ThemeProvider theme={theme}>
+   <Container component="main" maxWidth="xs">
+   <CssBaseline />
+   <Box sx={{ marginTop: 8,display: 'flex',flexDirection: 'column', alignItems: 'center' }}>
+   <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}><LockOutlinedIcon /></Avatar>
+   <Typography component="h1" variant="h5"> Log in </Typography>
+   <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+   <TextField margin="normal" required fullWidth name="email"  id="email" onChange={handleChange} label="Email Address" autoComplete="email" autoFocus className='Login' />
+   <TextField margin="normal" required fullWidth name="password" id="password" onChange={handleChange} label="Password" type="password"  autoComplete="current-password" className='Login' />
+   <FormControlLabel control={<Checkbox value="remember" color="secondary" />} label="Remember me" />
+   <Button type="submit" fullWidth variant="contained" color='secondary' sx={{ mt: 3, mb: 2 }} onClick={handleSubmit} > LOG IN </Button>
+   {err && <p>{err}</p>}
+   </Box>
+   </Box>
+   <Box sx={{ mt: 5, mb: 4 }}>
+   <Copyright />
+   </Box>
+   </Container>
+   </ThemeProvider>
+   <br></br>
+
+   <Footer></Footer>
+ </div>
   );
-  }
+}
    export {Login} ;

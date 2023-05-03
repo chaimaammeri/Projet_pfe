@@ -10,6 +10,7 @@ import AgentManage from './Pages/AgentManage';
 import DeskManage from './Pages/DeskManage';
 import BotManage from './Pages/BotManage';
 import { Login } from './Pages/Login';
+import Inbox from './Pages/Inbox';
 
 const router = createBrowserRouter([
   { path: "/",
@@ -17,8 +18,12 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry .......</h1>,
 },
 
-  { path: "/login",
+  { path: "/Login",
   element: <Login></Login>, 
+},
+
+{ path: "/Inbox",
+element: <Inbox></Inbox>, 
 },
 
   { path: "/RHAdmin",

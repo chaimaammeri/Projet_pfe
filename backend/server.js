@@ -1,100 +1,43 @@
 import express from 'express' 
-import mysql from 'mysql'
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import adminRoutes from './Routes/AdminM.js'   // adminRoutes est le nom que j'ai donnée au page admin manage dans la page server.js  
+import agentRoutes from './Routes/AgentM.js'
+import authRoutes from './Routes/Auth.js'
+import botRoutes from './Routes/BotM.js'
+import deskRoutes from './Routes/DeskM.js'
+import homeRoutes from './Routes/Home.js'
+import rhadminRoutes from './Routes/RHAdmin.js'
+import rhreportRoutes from './Routes/RHReport.js'
 
 
 const app = express()
-// app.use(cors())
-const db = mysql.createConnection({
-  host:"localhost" ,
-  user:"root" ,
-  password:"Chaimamysql123@",
-  database:"dxctech"
-});
-// if there is a auth problem 
-// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password_ BY 'Chaimamysql123@'
-
 app.use(express.json())
 
-// --------------------------------------------------------------------------------------------------------
-// Middleware
-app.use(bodyParser.json());
-app.use(cors());
+app.use("/backend/Routes",adminRoutes)   // adminRoutes est le nom du fichier 'adminM' importer 
+app.use("/backend/Routes",agentRoutes)
+app.use("/backend/Routes",authRoutes)
+app.use("/backend/Routes",botRoutes)
+app.use("/backend/Routes",deskRoutes)
+app.use("/backend/Routes",homeRoutes)
+app.use("/backend/Routes",rhadminRoutes)
+app.use("/backend/Routes",rhreportRoutes)
 
-// Routes
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  
-  // Check if email and password are valid
-  // You would typically check these against a database
-  if (email === 'example@example.com' && password === 'password') {
-    // Return a success response
-    res.json({ success: true });
-  } else {
-    // Return an error response
-    res.status(401).json({ error: 'Invalid credentials' });
-  }
+app.use(cors())
+app.use(bodyParser.json())
+
+// This will handle any errors that occur in your routes and send an error response to the client.
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
-
-// Start server
-app.listen(3001, () => {
-  console.log('Server started on port 3001');
-});
-// --------------------------------------------------------------------------------------
-
-
 
 
 // le message affiché dans la page principale 
-  app.get("/", (req, res)=>{
-  res.json("hello this is my first backend")
-});
-
-//  get c.à.d : give me the code from the backend 
-// c un selection de tout le table desk et qui retourne ce table dans la page \desk
-app.get("/desk", (req, res)=>{
-  const q ="SELECT * FROM desk"
-  db.query(q,(err,data)=>{
-    if(err) return res.json(err)
-    return res.json(data)
+app.get("/test", (req, res)=>{
+    res.json("hello this is my first backend")
   });
-});
-
-// post c.à.d : ajouter ou envoyer un code to the backend
-// c une inserstion d'un nouveaux champ au table desk dans la page '\desk'
-// je peux tester ca avec postman et pour voir ce table je fais un get
-
-app.post("/desk", (req, res)=>{
-  const q ="INSERT INTO desk (`ID_Desk`,`Marque`,`Modèle`,`Annèe_fabrication`) VALUES (?)"
-  const values =["2015","renault","gffff","1987"];
-
-  db.query(q,[values],(err,data)=>{
-    if(err) return res.json(err)
-    return res.json("desk has been created successfully")
+  
+app.listen(3001, () => {
+  console.log('Connected to backend localhost:3001');
   });
-});
-
-
-// app.post("/desk", (req, res)=>{
-//   const q ="INSERT INTO desk (`ID_Desk`,`Marque`,`Modèle`,`Annèe_fabrication`) VALUES (?)"
-//   const values =[
-//       req.body.ID_Desk,
-//       req.body.Marque,
-//       req.body.Modèle,
-//       req.body.Annèe_fabrication,
-//   ];
-
-//   db.query(q,[values],(err,data)=>{
-//     if(err) return res.json(err)
-//     return res.json("desk has been created successfully")
-//   });
-// });
-
-
-
-
-
-app.listen(8800, () => {
-  console.log('Connected to backend localhost:8800');
-});
