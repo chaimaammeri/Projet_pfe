@@ -15,19 +15,23 @@ const Header = () => {
           <span style={{position: 'relative', color: 'olivedrab', fontSize: '12px', letterSpacing: '2px'}} title="Hi" >chaima.ammeri24@dxc.com</span> 
         </div>
         <ul className="index-nav">
-          <li>
-            <a href="admin-inbox.php" className="profile">
-              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '0px', display: 'block', zIndex: -1}}>
-                <svg id="Layer_1" enableBackground="new 0 0 512 512" height={33} viewBox="0 0 512 512" width={33} fill="white" xmlns="http://www.w3.org/2000/svg">
-                  <path d="m452 48h-392c-33.084 0-60 26.916-60 60v49.495l220.191 163.781c10.709 7.965 23.259 11.948 35.809 11.948s25.1-3.982 35.809-11.948l220.191-163.781v-49.495c0-33.084-26.916-60-60-60zm2089.396-204.063 151.784c-7.14 5.311-16.734 5.311-23.873 0l-204.064-151.784v-29.396c0-11.028 8.972-20 20-20h392c11.028 0 20 8.972 20 20zm0 99.703 40-29.752v196.653c0 33.084-26.916 60-60 60h-392c-33.084 0-60-26.916-60-60v-196.653l40 29.752v166.901c0 11.028 8.972 20 20 20h392c11.028 0 20-8.972 20-20z" />
+
+
+        <li>
+            <a href="logout.php" className="logout">
+              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '-4px', display: 'block'}}>
+                <svg height={60} className="logout" viewBox="0 0 512 512" width={30} fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <g id="Solid">
+                    <path d="m480.971 239.029-90.51-90.509a24 24 0 0 0 -33.942 0 24 24 0 0 0 0 33.941l49.54 49.539h-262.059a24 24 0 0 0 -24 24 24 24 0 0 0 24 24h262.059l-49.54 49.539a24 24 0 0 0 33.942 33.941l90.51-90.51a24 24 0 0 0 0-33.941z" />
+                    <path d="m304 392a24 24 0 0 0 -24 24v24h-208v-368h208v24a24 24 0 0 0 48 0v-32a40 40 0 0 0 -40-40h-224a40 40 0 0 0 -40 40v384a40 40 0 0 0 40 40h224a40 40 0 0 0 40-40v-32a24 24 0 0 0 -24-24z" />
+                  </g>
                 </svg>
               </i>
-              <p style={{marginTop: '18px', marginLeft: '18px'}}>
-                <span id="counter" style={{color: '#64a4e8', fontWeight: 'bold', fontSize: '19px', position: 'absolute', marginTop: '20px', marginLeft: '-17px'}}>0</span>Inbox
-              </p>
+              <p style={{marginTop: '18px', marginLeft: '15px'}}>Logout</p>
             </a>
           </li>
-          <li className="profile-over">
+
+          {/* <li className="profile-over">
             <a href="#" className="profile">
               <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '3px', display: 'block'}}>
                 <svg id="light" enableBackground="new 0 0 24 24" fill="white" height="30pt" viewBox="0 0 24 24" width={28} xmlns="http://www.w3.org/2000/svg">
@@ -46,11 +50,11 @@ const Header = () => {
               <NavLink to="cases.php">Cases </NavLink>
               <NavLink to="data-meaning-agent.php" target="_blank">Data Meaning</NavLink>
             </div>
-          </li>                       
+          </li>                        */}
           <li className="profile-over">
             <a href="#" className="profile">
-              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '3px', display: 'block'}}>
-                <svg id="Layer_1" enableBackground="new 0 0 512 512" x="0px" y="0px" height={45} viewBox="0 0 512 512" width={38} xmlns="http://www.w3.org/2000/svg">
+              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '1px', display: 'block'}}>
+                <svg id="Layer_1" enableBackground="new 0 0 512 512" x="0px" y="0px" height={45}  viewBox="0 0 512 512" width={38} xmlns="http://www.w3.org/2000/svg">
                   <path d="m155.307 351.643-19.133 13.079c-1.548 1.058-3.35 1.594-5.157 1.594-1.46 0-2.926-.35-4.265-1.057-2.997-1.582-4.873-4.692-4.873-8.082v-27.005h-63.29c-28.171 0-51.089 22.626-51.089 50.438v66.287c0 3.026 2.453 5.48 5.481 5.48h137.648l24.418-80.994z" fill="#c7eefd" />
                   <path d="m309.447 411.065-.508-2.002-22.852-4.891c-3.069-.657-5.262-3.369-5.262-6.508v-15.605c0-3.14 2.192-5.852 5.262-6.508l22.852-4.891.508-2.003c2.018-7.943 5.176-15.558 9.387-22.633l1.058-1.775-9.113-14.077h-52.096v27.005c0 3.389-1.877 6.5-4.873 8.082-1.34.706-2.805 1.057-4.265 1.057-1.809 0-3.609-.536-5.158-1.594l-19.133-13.079-19.74 19.74 24.419 80.994h79.016l10.943-16.903-1.058-1.775c-4.211-7.076-7.368-14.69-9.387-22.634z" fill="#c7eefd" />
                   <path d="m49.438 446.897v-66.287c0-27.812 22.918-50.438 51.089-50.438h-41.938c-28.171 0-51.089 22.626-51.089 50.438v66.287c0 3.026 2.453 5.48 5.481 5.48h41.938c-3.027 0-5.481-2.453-5.481-5.48z" fill="#98e5fb" />
@@ -85,15 +89,15 @@ const Header = () => {
                     10.068-10.068 19.054 12.335c2.396 1.55 5.463 1.608 7.913.148l1.773-1.055c6.457-3.842 13.403-6.723 20.645-8.562l2.002-.508c2.766-.701 4.893-2.911 5.49-5.701l4.746-22.183h14.24l4.749 22.184c.597 2.789 2.725 4.998 5.489 5.7l1.999.507c7.244 1.841 14.19 4.722 20.645 8.563l1.776 1.057c2.452 1.458 5.519 1.4 7.912-.15l19.052-12.335 10.07 10.069-12.336 19.053c-1.551 2.396-1.607 5.463-.147 7.915l1.056 1.771c3.84 6.455 6.72 13.401 8.561 20.65l.51 2.002c.704 2.762 2.912 4.887 5.699 5.483l22.182 4.748z" />
                 </svg>
               </i>
-              <p style={{marginTop: '18px', marginLeft: '15px'}}>HR</p>
+              <p style={{marginTop: '20px', marginLeft: '15px'}}>HR</p>
             </a>
             <div className="dropdown-content">
-              <NavLink to="/RHAdmin" target="_blank">RH Admin</NavLink>
-              <NavLink  to="/RHReport" target="_blank">RH Report</NavLink>
+              <NavLink to="/RHAdmin" >RH Admin</NavLink>
+              <NavLink  to="/RHReport" >RH Report</NavLink>
             </div>
           </li> 
           <li className="profile-over">
-            <a href="admin-inbox.php" className="profile">
+            <a href="" className="profile">
               <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '-3px', display: 'block'}}>{/*?xml version="1.0" encoding="iso-8859-1"?*/}
                 {/* Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  */}
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="10px" y="10px" height={55} viewBox="0 0 512 512" width={35} style={{enableBackground: 'new 0 0 511 511'}} fill="white" xmlSpace="preserve">
@@ -113,28 +117,29 @@ const Header = () => {
                   <g /><g /> <g /><g /> <g /><g /> <g /> <g /> <g /><g /> <g /><g /> <g /><g /> <g />
                 </svg>
               </i>
-              <p style={{marginTop: '18px', marginLeft: '15px'}}><span id="counter2" style={{color: 'olivedrab', fontWeight: 'bold', fontSize: '19px', position: 'absolute', marginTop: '20px', marginLeft: '-17px'}}>0 </span>Manage</p>
+              <p style={{marginTop: '18px', marginLeft: '15px'}}><span id="counter2" style={{color: 'olivedrab', fontWeight: 'bold', fontSize: '19px', position: 'absolute', marginTop: '20px', marginLeft: '-17px'}}></span>Manage</p>
             </a>
             <div className="dropdown-content">
-              <NavLink  to="/AdminManage">User Manage</NavLink>
+              <NavLink  to="/UserManage">User Manage</NavLink>
               <NavLink  to="/AgentManage">Agent Mange</NavLink>
               <NavLink  to="/DeskManage">Desk Manage</NavLink>
-              <NavLink  to="/BotManage">BOT Manage</NavLink>
+              {/* <NavLink  to="/BotManage">BOT Manage</NavLink> */}
             </div>
-          </li>  
+          </li> 
           <li>
-            <a href="logout.php" className="logout">
-              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '-4px', display: 'block'}}>
-                <svg height={60} className="logout" viewBox="0 0 512 512" width={30} fill="white" xmlns="http://www.w3.org/2000/svg">
-                  <g id="Solid">
-                    <path d="m480.971 239.029-90.51-90.509a24 24 0 0 0 -33.942 0 24 24 0 0 0 0 33.941l49.54 49.539h-262.059a24 24 0 0 0 -24 24 24 24 0 0 0 24 24h262.059l-49.54 49.539a24 24 0 0 0 33.942 33.941l90.51-90.51a24 24 0 0 0 0-33.941z" />
-                    <path d="m304 392a24 24 0 0 0 -24 24v24h-208v-368h208v24a24 24 0 0 0 48 0v-32a40 40 0 0 0 -40-40h-224a40 40 0 0 0 -40 40v384a40 40 0 0 0 40 40h224a40 40 0 0 0 40-40v-32a24 24 0 0 0 -24-24z" />
-                  </g>
+           <a href="/AdminProfil" className="profile"> 
+              <i style={{fontSize: '22px', position: 'absolute', marginLeft: '65px', marginTop: '0px', display: 'block', zIndex: -1}}>
+                <svg id="Layer_1" enableBackground="new 0 0 512 512" height={33} viewBox="0 0 512 512" width={33} fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m452 48h-392c-33.084 0-60 26.916-60 60v49.495l220.191 163.781c10.709 7.965 23.259 11.948 35.809 11.948s25.1-3.982 35.809-11.948l220.191-163.781v-49.495c0-33.084-26.916-60-60-60zm2089.396-204.063 151.784c-7.14 5.311-16.734 5.311-23.873 0l-204.064-151.784v-29.396c0-11.028 8.972-20 20-20h392c11.028 0 20 8.972 20 20zm0 99.703 40-29.752v196.653c0 33.084-26.916 60-60 60h-392c-33.084 0-60-26.916-60-60v-196.653l40 29.752v166.901c0 11.028 8.972 20 20 20h392c11.028 0 20-8.972 20-20z" />
                 </svg>
               </i>
-              <p style={{marginTop: '18px', marginLeft: '15px'}}>Logout</p>
-            </a>
+              <p style={{marginTop: '18px', marginLeft: '18px'}}>
+                <span id="counter" style={{color: '#64a4e8', fontWeight: 'bold', fontSize: '19px', position: 'absolute', marginTop: '20px', marginLeft: '-17px'}}></span>Admin Profil
+              </p>
+            </a> 
           </li>
+
+
         </ul>
                </header>
         </div>

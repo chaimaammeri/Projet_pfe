@@ -3,9 +3,12 @@ import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-
+import ButtCreate from '../Components/ButtCreate';
+import ButtModify from '../Components/ButtModify';
+import { NavLink } from 'react-router-dom';
+import Fab from '@mui/material/Fab';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 
 
@@ -13,46 +16,47 @@ const AgentManage = () => {
     return (
         <div>
      <Header></Header>
-      <div className="tit"> Agent Manage </div> 
+  
         <div className="main-manage2">
           <div className="manage">
-            <div className="managetitle2">Create New Agent<span style={{color: 'olivedrab', float: 'right', margin: 'auto', fontSize: '16px', marginRight: '22px', fontWeight: 'bold', cursor: 'pointer', lineHeight: '22px', display: 'inline-block', zIndex: 3}} onclick="notepad()">❐&nbsp;Notepad +</span></div>
+          <div className="managetitle2" style={{marginLeft:'220px'}}>Create New Agent <NavLink to="/AgentList" style={{float:'right',fontSize: '16px' ,marginRight: '30px' ,fontWeight:'bold',cursor:'pointer',lineHeight: '22px' ,display:'inlineBlock',color:'grey',zIndex:'3'}} onclick="">❐LIST OF AGENTS</NavLink></div>
             <div className="manageform">
               <div className="form-frame"> 
                 <div className="frame1" style={{marginLeft: '-150px'}}>                            
-                  <form action="/agent_manage.php" method="post" name="form-create">
+                  <form action="" method="post" name="form-create">
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="number" name="userId" className="form-control  purple-border shadow-effect" id="userId" placeholder="User ID Numeric Value" minLength={6} title="Minimimum 6 Numric Characters" required />
+                      <input type="number" name="userId" id="userId"  className="form-control  purple-border shadow-effect" placeholder="User ID Numeric Value" minLength={6} title="Minimimum 6 Numric Characters" required />
                       <label htmlFor="floatingID">User ID</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="firstName" autoComplete="off" className="form-control  purple-border shadow-effect" id="floatingID" placeholder="User FullName" required />
+                      <input type="text" name="firstName" id="floatingID" autoComplete="off" className="form-control  purple-border shadow-effect" placeholder="User FullName" required />
                       <label htmlFor="floatingID">FirstName</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="lasttName" className="form-control  purple-border shadow-effect" id="floatingID" placeholder="User FullName" required />
+                      <input type="text" name="lasttName" id="floatingID" className="form-control  purple-border shadow-effect" placeholder="User FullName" required />
                       <label htmlFor="floatingID">LastName </label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="email" name="email" autoComplete="off" className="form-control  purple-border shadow-effect" id="floatingID" placeholder="User Email" required />
+                      <input type="email" name="email" id="floatingID" autoComplete="off" className="form-control  purple-border shadow-effect" placeholder="User Email" required />
                       <label htmlFor="floatingID">Email</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="address" placeholder="Agen Address" minLength={6} autoComplete="off" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" id="floatingID" name="address" placeholder="Agen Address" minLength={6} autoComplete="off" className="form-control  purple-border shadow-effect"  required />
                       <label htmlFor="floatingID">Address </label>
                     </div>
                   </form>
                 </div>
                 <div className="frame2" style={{marginLeft: '152px'}}> 
-                  <form action="/agent_manage.php" method="post" name="form-create">
+                  <form action="" method="post" name="form-create">
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="tel" name="phone" placeholder="Height Phone Numbers Required" minLength={8} pattern="[0-9]{8}" className="form-control  purple-border shadow-effect" id="floatingID" />
+                      <input type="tel" name="phone"  id="floatingID" placeholder="Height Phone Numbers Required" minLength={8} pattern="[0-9]{8}" className="form-control  purple-border shadow-effect" />
                       <label htmlFor="floatingID"> Phone</label>
                     </div>  
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
-                      <select type="select" title="User Desk" className="form-select shadow-effect purple-border" id="desk" name="desk" style={{width: '300px', color: 'var(--bs-body-color)'}} onchange="langSelect(this.id,&quot;lang&quot;)">
+                      <select type="select"  id="desk" name="desk"  title="User Desk" className="form-select shadow-effect purple-border"style={{width: '300px', color: 'var(--bs-body-color)'}} onchange="langSelect(this.id,&quot;lang&quot;)">
                         <option selected data-search />
-                        <option value="NA">NA</option><option value="Renault" data-search="renault">Renault</option>
+                        <option value="NA">NA</option>
+                        <option value="Renault" data-search="renault">Renault</option>
                         <option value="Nissan" data-search="nissan">Nissan</option>
                         <option value="Saipem" data-search="spm">Saipem</option>
                         <option value="Convatec" data-search="cvt">Convatec</option>
@@ -65,16 +69,15 @@ const AgentManage = () => {
                         <option value="Servier" data-search="servier">Servier</option> 
                       </select>
                       <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>Desk</label>
-                    </div>              
+                    </div>           
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
-                      <select type="select" id="lang" name="lang" title="User lang" className="form-select shadow-effect purple-border" style={{width: '300px'}}>
-                        <option value data-search="hei" selected />
-                        <option value="Anglais" data-search="hei">Anglais</option>
-                        <option value="Français" data-search="hei">Français</option>
-                        <option value="Espagnole" data-search="hei">Espagnole</option>
+                      <select type="text" name="status" id="status" title="User Privileges" required className="form-select shadow-effect purple-border" style={{width: '300px'}}>
+                        <option value selected />
+                        <option value="activated">1 - Activated</option>             
+                        <option value="desativated">2 - Desactivated</option>
                       </select>
-                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}> Languages </label>
-                    </div>
+                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>  Status </label>
+                    </div>    
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
                       <select type="text" name="status" id="unit" title="User Desk" required className="form-select shadow-effect purple-border" style={{width: '300px'}}>
                         <option value selected />
@@ -86,36 +89,37 @@ const AgentManage = () => {
                       <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>Unit</label>
                     </div>
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
-                      <select type="text" name="status" id="status" title="User Privileges" required className="form-select shadow-effect purple-border" style={{width: '300px'}}>
-                        <option value selected />
-                        <option value="activated">1 - Activated</option>             
-                        <option value="desativated">2 - Desactivated</option>
+                      <select type="select" id="lang" name="lang" title="User lang" className="form-select shadow-effect purple-border" style={{width: '300px'}}>
+                        <option value data-search="hei" selected />
+                        <option value="all">All</option>
+                        <option value="Anglais" data-search="hei">Anglais</option>
+                        <option value="Français" data-search="hei">Français</option>
+                        <option value="Espagnole" data-search="hei">Espagnole</option>
+                        <option value="Espagnole" data-search="hei">Italien</option>
+
                       </select>
-                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>  Status </label>
-                    </div>                                       
+                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}> Languages </label>
+                    </div>                                      
                   </form> 
                 </div>
               </div>    
               <br /><br />    
-              <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
-             
-              {/* <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '9%', paddingRight: '9%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
+              <ButtCreate></ButtCreate>
               <span style={{width: 'auto', fontWeight: 'normal'}} /> 
-              <br /><br /> 
             </div>
           </div>
         </div>
 
         <div className="main-manage2" style={{marginTop: '5%'}}>
           <div className="manage">
-            <div className="managetitle2">Modify Agent<a className="list" name="agent" style={{fontSize: '17px', color: 'olivedrab', height: '23px', marginLeft: '5px', lineHeight: '24px', fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif', float: 'right', marginRight: '20px'}} href="agent_list.php">♻ Agent List</a></div>
+            <div className="managetitle2">Modify Agent</div>
             <div className="manageform">
               <div className="form-frame">
-                <div className="frame1" style={{marginLeft: '10px'}}> 
-                  <form action="/agent_manage.php" method="post" onsubmit="return validateForm()">   
+                <div className="frame1" style={{marginLeft: '40px'}}> 
+                  <form action="" method="post" onsubmit="">   
                   <div style={{display: 'flex',alignItems: 'center'}}>
     <div className="form-floating" style={{margin: '12px'}}>
-    <input type="number" name="search-id" id="search-id" defaultValue placeholder="User ID Numeric Value" minLength={6} title="Minimum 6 Numeric Characters" className="form-control purple-border shadow-effect" />
+    <input type="number" name="search-id" id="search-id" placeholder="User ID Numeric Value" minLength={6} title="Minimum 6 Numeric Characters" className="form-control purple-border shadow-effect" />
     <input type="hidden" name="hiddenID" defaultValue />   
     <label htmlFor="floatingID">Search ID</label>  
   </div>
@@ -129,33 +133,34 @@ const AgentManage = () => {
   </div>
 </div>
 
-                    <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
+                <span style={{color: 'olivedrab', fontSize: '14px'}} /> 
                   </form>
-                  <form action="/agent_manage.php" method="post">     
+                  <form action="" method="post" onsubmit="">     
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-firstName" placeholder="User firstName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" name="update-firstName" id="floatingID" placeholder="User firstName" className="form-control  purple-border shadow-effect" required />
                       <input type="hidden" name="hiddenID"  />  
                       <label htmlFor="floatingID">FirstName</label>
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="email" name="update-email" placeholder="User Email" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="email" name="update-email" id="floatingID" placeholder="User Email" className="form-control  purple-border shadow-effect" required />
                       <label htmlFor="floatingID">LastName </label> 
                     </div>
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-lastName" placeholder="User lastName" className="form-control  purple-border shadow-effect" id="floatingID" required />
+                      <input type="text" name="update-lastName" id="floatingID" placeholder="User lastName" className="form-control  purple-border shadow-effect" required />
                       <label htmlFor="floatingID">Email </label> 
-                    </div>   
+                    </div> 
                     <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="tel" name="update-phone" placeholder="Height Phone Numbers Required" minLength={8} pattern="[0-9]{8}" className="form-control  purple-border shadow-effect" id="floatingID" />
-                      <label htmlFor="floatingID"> Phone</label>
-                    </div>   
+                      <input type="text" name="update-address" id="floatingID" placeholder="User Address" minLength={6} className="form-control  purple-border shadow-effect" />
+                      <label htmlFor="floatingID">Address </label>  
+                    </div>  
+                     
                   </form>
                 </div> 
                 <div className="frame2" style={{marginLeft: '120px'}}> 
-                  <form action="/agent_manage.php" method="post" onsubmit="return validateForm()">   
-                    <div className="form-floating" style={{margin: '12px'}}>
-                      <input type="text" name="update-address" placeholder="User Address" minLength={6} className="form-control  purple-border shadow-effect" id="floatingID" />
-                      <label htmlFor="floatingID">Address </label>  
+                  <form action="" method="post" onsubmit="">   
+                  <div className="form-floating" style={{margin: '12px'}}>
+                      <input type="tel" name="update-phone" id="floatingID" placeholder="Height Phone Numbers Required" minLength={8} pattern="[0-9]{8}" className="form-control  purple-border shadow-effect"  />
+                      <label htmlFor="floatingID"> Phone</label>
                     </div>
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
                       <select type="select" name="update-desk" title="User Desk" id="update-desk" className="form-select shadow-effect purple-border" style={{width: '300px'}} onchange="langSelect(this.id, &quot;update-lang&quot;);desk()">
@@ -176,6 +181,14 @@ const AgentManage = () => {
                       <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>Desk</label>
                     </div> 
                     <span id="unit-container" style={{display: 'none'}} />
+                    <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
+                      <select type="text" name="status" id="status" title="User Privileges" required className="form-select shadow-effect purple-border" style={{width: '300px'}}>
+                        <option value selected />
+                        <option value="activated">1 - Activated</option>             
+                        <option value="desativated">2 - Desactivated</option>
+                      </select>
+                      <label htmlFor="floatingInput" style={{fontWeight: 'bold', color: 'black', fontSize: '17px'}}>  Status </label>
+                    </div>
                     <div className="form-floating mb-3" style={{margin: '12px', marginTop: '-3px'}}>
                       <select type="text" name="status" id="unit" title="User Desk" required className="form-select shadow-effect purple-border" onchange="desk();" style={{width: '300px'}}>
                         <option value selected />
@@ -200,16 +213,14 @@ const AgentManage = () => {
                 </div>
               </div> 
                  <br /><br /> 
-                 <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" name="agent-search" defaultValue="Send" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} >SEND</Button>
-                
-              {/* <input type="submit" name="submit-create" defaultValue="CREATE" className="btn btn-purple " id="floatingID" style={{paddingLeft: '5.5%', paddingRight: '5.5%', letterSpacing: '4px', marginBottom: '2%', marginLeft: '3%'}} /> */}
+              <ButtModify></ButtModify>                
               <span style={{width: 'auto', fontWeight: 'normal'}} /> 
-              <br /><br /> 
+              
             </div>
          
           </div>     
         </div>
-        <br /><br /><br /><br />
+        <br /><br />
         <Footer></Footer>   
         </div>
     );

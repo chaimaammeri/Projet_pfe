@@ -12,7 +12,7 @@ const db = mysql.createConnection({
 const saltRounds = 10;
 
 bcrypt.hash('chaima12345', saltRounds, function(err, hash) {
-  const administrator = { Id_Admin:'01',Email_Admin: 'chaimaammeri@dxc.com', Password_Admin: hash };
+  const administrator = { id:'01',email: 'chaimaammeri@dxc.com', password: hash };
   db.query('INSERT IGNORE INTO administrator SET ?', administrator, function(error, results, fields) {
     if (error) throw error;
     if (results.affectedRows === 0) {
@@ -24,7 +24,7 @@ bcrypt.hash('chaima12345', saltRounds, function(err, hash) {
 });
 
 bcrypt.hash('mehdi12345', saltRounds, function(err, hash) {
-  const administrator = { Id_Admin:'02',Email_Admin: 'mehdikhamlia@dxc.com', Password_Admin: hash };
+  const administrator = { id:'02',email: 'mehdikhamlia@dxc.com', password: hash };
   db.query('INSERT IGNORE INTO administrator SET ?', administrator, function(error, results, fields) {
     if (error) throw error;
     if (results.affectedRows === 0) {
@@ -36,7 +36,7 @@ bcrypt.hash('mehdi12345', saltRounds, function(err, hash) {
 });
 
 bcrypt.hash('abir12345', saltRounds, function(err, hash) {
-  const administrator = { Id_Admin:'03',Email_Admin: 'abir.gharrad@dxc.com', Password_Admin: hash };
+  const administrator = { id:'03',email: 'abir.gharrad@dxc.com',password: hash };
   db.query('INSERT IGNORE INTO administrator SET ?', administrator, function(error, results, fields) {
     if (error) throw error;
     if (results.affectedRows === 0) {
@@ -48,7 +48,7 @@ bcrypt.hash('abir12345', saltRounds, function(err, hash) {
 });
 
 bcrypt.hash('abdallah12345', saltRounds, function(err, hash) {
-  const administrator = { Id_Admin:'04',Email_Admin: 'abdallah.ghedamsi@dxc.com', Password_Admin: hash };
+  const administrator = { id:'04',email: 'abdallah.ghedamsi@dxc.com', password: hash };
   db.query('INSERT IGNORE INTO administrator SET ?', administrator, function(error, results, fields) {
     if (error) throw error;
     if (results.affectedRows === 0) {
@@ -60,7 +60,7 @@ bcrypt.hash('abdallah12345', saltRounds, function(err, hash) {
 });
 
 bcrypt.hash('adel12345', saltRounds, function(err, hash) {
-  const administrator = { Id_Admin:'05',Email_Admin: 'adel.nbili@dxc.com', Password_Admin: hash };
+  const administrator = { id:'05',email: 'adel.nbili@dxc.com', password: hash };
   db.query('INSERT IGNORE INTO administrator SET ?', administrator, function(error, results, fields) {
     if (error) throw error;
     if (results.affectedRows === 0) {

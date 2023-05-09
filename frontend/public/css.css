@@ -1,6 +1,22 @@
+ 
+/* ------------------------------- */
+ .footAD{
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 4px;
+  padding: 5px; 
+  color: rgb(245, 243, 243);
+  background-color: black;
+  box-shadow: 3px 3px 15px black;
+  opacity: 0.8;
+  font-family: 'Bauhaus93, sans-serif';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
  /* ---------------------rh admin------------------------------------------------------------ */
  .search-menue{ 
-    background-color: rgb(0, 0, 0);; 
+    background-color: rgb(0, 0, 0);
     color: white; 
     position: fixed; 
     z-index: 3;
@@ -11,29 +27,23 @@
   }
   #search:active{border: none;}
   .no-focus-outline:focus {outline: none;}
-  /*.data-main {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    grid-column-gap: 1px;
-    height: 100%;
-    width: 99%;
-    margin-top: 10%;
-  } */
+ 
   .data-main-frame{
-  background-color: rgb(0, 0, 0);;
-  color: #fffcfc; 
+  background-color: rgb(213, 207, 207);
+  opacity: 0.8; 
+  border: rgb(213, 207, 207) 1px solid;
+  color: #000000; 
   position: fixed; 
   width: 100%; 
-  height:50%;
+  height:25%;
   z-index: -1; 
   top: 100px;
   margin-top: 2%;
   padding: 15px;
-  border-top :solid 1px rgb(8, 8, 8) ;
+  /* border-top :solid 1px rgb(8, 8, 8) ;
   border-bottom :solid 1px rgb(0, 0, 0) ;
   border-bottom :solid 1px rgb(0, 0, 0) ;
-  box-shadow: 3px 3px 15px black;
+  box-shadow: 3px 3px 15px black; */
   opacity: 0.75s;
   }
     .item{
@@ -46,6 +56,7 @@
     }
     
   .main-manage22{
+    position: sticky;
     width:70%; 
     z-index: 1;
     background-color: whitesmoke;
@@ -54,7 +65,7 @@
     margin-top: 19%;
     margin-bottom: 5%;
   }/* shadow effect dans agent manage  */
-  /* ----------agent manage & admin manage & desk manage ------------------------------------------- */
+  /* ----------agent manage & user manage & desk manage ------------------------------------------- */
   .main-manage2{
     display: grid;
     grid-template-columns: 100%;
@@ -62,12 +73,13 @@
     row-gap: 10px;
     grid-column: auto auto;
     justify-content: space-between;
-    background-color: whitesmoke;
-    box-shadow: 2px 2px 14px black;
+    border: rgb(153, 151, 151) solid 1px;
+    border-radius: 4px;
+   
     z-index: 1;
-    width: 94%;
-    height: 125%;
-    margin: 150px 0  5% 40px ;
+    width: 78%;
+    height: 120%;
+    margin: 150px 0  5% 160px ;
   }
   .main-manage2> .shadow-effect,.main-manage22> .shadow-effect {
   box-shadow: 0 0 7px 3px rgba(226, 209, 235, 0.42) ;
@@ -91,7 +103,7 @@
     text-align: center;
     padding-top: 8px;
     margin-top: 2%; 
-    margin-left: 9%; /* nes pas existe dans rh ad */
+    margin-left: 4%; /* nes pas existe dans rh ad */
     line-height: 70px;
     font-family: 'Bauhaus93, sans-serif';
     font-size: 2.2vw;
@@ -293,4 +305,161 @@ border-color: grey;
 .form-menue {
     margin-left: 30px;
     text-align: center;
+}
+/* ------------------Admin profile-------------- */
+.adm{
+  background-color: rgb(203, 201, 201);
+}
+.wrapper{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 680px;
+  height: 320px;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69,90,100,0,0.08) 
+}
+
+.wrapper .left{
+  width: 28%;
+  background: linear-gradient(to right, #650361 , rgba(164, 5, 145, 0.867) );
+  padding: 30px 25px ;
+  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.wrapper .left img{
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 120px;
+  height: 100px;
+}
+.wrapper .left h5{
+margin-bottom: 12px;
+}
+.wrapper .left p{
+font-size: 14px;
+}
+.wrapper .right{
+  width: 72%;
+  background: #f1f1f1;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 30px 25px;
+}
+.info{
+
+}
+.wrapper .right .info ,.wrapper .right .projects{
+  margin-bottom: 33px;
+}
+.wrapper .right .info h3 ,.wrapper .right .projects h3{
+margin-bottom: 15px;
+padding-bottom: 5px;
+border-bottom: 1px solid #e0e0e0;
+color:#353c4e ;
+text-transform: uppercase;
+letter-spacing: 5px;
+}
+.wrapper .right .info_data ,.wrapper .right .projects_data {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .right .info_data .data ,.wrapper .right .projects_data .data{
+  width: 45%;
+}
+.wrapper .right .info_data .data h4 ,.wrapper .right .projects_data .data h4{
+  color:#353c4e ;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.wrapper .right .info_data .data p ,.wrapper .right .projects_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+/* ---------------rhreport----------------------- */
+.bodyy {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  min-height: 100vh;
+ display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main{
+  background-color: rgba(111, 108, 108, 0.333);
+  margin-top: 100px;
+  margin-bottom: 50px;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+  overflow: hidden;
+}
+.main.table {
+  text-align: center;
+  width: 82vw;
+  height: 90vh;
+  margin-left: 120px;
+}
+
+.table_header {
+  width: 100%;
+  height: 10%;
+  /* color: olivedrab; */
+  background-color: #fff5;
+  /* opacity: 0.9; */
+  padding: .8rem 1rem;
+}
+
+.table_body {
+  width: 95%;
+  max-height: calc(89% - .1.6rem);
+  background-color: #fffb;
+  border-radius: .6rem;
+  margin: .8rem auto;
+  overflow: auto;
+}
+
+.table_body::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.table_body:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.table, .td, .th {
+  padding: 1rem;
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #d5d1defe;
+  color: #650361;
+}
+
+.tbody .tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+.tbody .tr:hover {
+  background-color: #fff6;
 }

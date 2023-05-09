@@ -17,24 +17,24 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// import LoginSide from './LoginSide';
-
 
 const theme = createTheme();
-
 function Copyright(props) {
 return (
 <Typography variant="body2" color="text.secondary" align="center" {...props}>
 {'Copyright '}
-<Link color="inherit" href="http://localhost:3000">
+<Link color="inherit" href="http://localhost:3000/AdminProfil">
 DXC Technology
 </Link>{' '}
 {new Date().getFullYear()}.
 </Typography>
 );}
 
+
+
+
 const Login = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] =  useState({
     email: "" ,
     password: "" ,
   })
@@ -47,18 +47,19 @@ const navigate = useNavigate();
 const handleChange = (e) => {
   setInputs ((prev) => ({ ...prev, [e.target.name]: e.target.value}))
 }
-
+ 
 const handleSubmit = async (e) => {
   e.preventDefault()
   try {
-    await axios.post("/Auth/login", inputs)
-    navigate("/")
+    await axios.post("http://localhost:3001/backend/Routes/Auth/Login", inputs)
+    navigate("/AdminProfil")
   }catch (err) {
     setError(err.response.data)
-  }
-}
+  }}
 
-  return (
+
+
+return (
  <div>
     <header className="index-container">
         <img className="pic" src={logo} alt='' />
@@ -89,9 +90,8 @@ const handleSubmit = async (e) => {
    </Container>
    </ThemeProvider>
    <br></br>
-
    <Footer></Footer>
  </div>
-  );
+);
 }
-   export {Login} ;
+   export default Login ;

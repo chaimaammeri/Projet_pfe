@@ -9,26 +9,27 @@ const RHAdmin = () => {
         <div className="search-menue">
           <b style={{position: 'absolute', color: 'white', left: '-56px', marginTop: '1.5%', transform: 'rotate(-90deg)', fontSize: '46px', letterSpacing: '2px', padding: '10px 26px 10px 26px', marginRight: '-90%', fontFamily: '"Bauhaus93, sans-serif"'}}>DXC</b>
           <b style={{color: 'black', textAlign: 'left', marginTop: '3%', transform: 'rotate(-90deg)', float: 'left', fontSize: '16px', letterSpacing: '2px', backgroundColor: 'white', padding: '8px 19px 8px 19px', fontFamily: '"Bauhaus93, sans-serif"'}}>technology</b>
-          <div className="fixe" style={{marginLeft: '300px'}}>
+          <div className="fixe" style={{marginLeft: '360px', marginTop:'33px'}}>
             <form action="/rh_admin.php" method="post" style={{textAlign: 'left', marginLeft: '50px', marginTop: '20px'}}>
               <span style={{fontSize: '23px', fontFamily: '"Bauhaus93'}}>Search 
                 <input type="text" id="search" onkeyup="crunchy(this.value)" name="search" className="form-create no-focus-outline" placeholder="Search" minLength={3} style={{width: '300px', marginLeft: '7px', height: '34px', fontSize: '15px', borderRadius: '10px black'}} title="Search" />
                 <span id="container" style={{position: 'absolute', zIndex: 3, backgroundColor: 'white', color: 'black', padding: '4px', borderRadius: '4px', fontSize: '13px', display: 'none', marginTop: '20px'}} />
 
-                <input type="submit" defaultValue="Show" className="btn btn-purple"  name="shows"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'solid 1px #0a0a0a'}} />
-                <input  type="reset" defaultValue="Reset" className="btn btn-success"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'none',backgroundColor:'olivedrab'}}/>
-                <button className="btn btn-secondary" style={{marginLeft: '30px', height: '40px', fontSize: '15px'}} onclick="javascript:window.print();">
+                {/* <input type="submit" defaultValue="Show" className="btn btn-purple"  name="shows"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'solid 1px #0a0a0a'}} />
+                <input  type="reset" defaultValue="Reset" className="btn btn-success"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'none',backgroundColor:'olivedrab'}}/> */}
+                {/* <button className="btn btn-purple" style={{marginLeft: '30px', height: '40px', fontSize: '15px'}} onclick="">
                   <span style={{fontSize: '20px', letterSpacing: '7px'}}>⎙</span> Print 
-                </button>
+                </button> */}
 
-                <div className="btn-group" style={{marginLeft: '820px',marginTop:'-6.5%'}}>
-                  <button type="button" className="btn btn-light">Human Resources</button>
-                  <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span className="visually-hidden">Toggle Dropdown</span></button>
+                <div className="btn-group" style={{marginLeft: '700px',marginTop:'-6.5%'}}>
+                  <button type="button" className="btn btn-purple">Human Resources</button>
+                  <button type="button" className="btn btn-purple dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span className="visually-hidden">Toggle Dropdown</span></button>
                   <ul className="dropdown-menu">
                     <li> <NavLink className="dropdown-item" to="/RHAdmin">RH Admin</NavLink></li>
                     <li> <NavLink className="dropdown-item" to="/RHReport">RH Report </NavLink> </li>
                     <li> <hr className="dropdown-divider" /></li>
-                    <li> <NavLink className="dropdown-item" to="/">Home</NavLink> </li>
+                    <li> <NavLink className="dropdown-item" to="/AdminProfil">Admin Profil</NavLink> </li>
                   </ul>
                 </div>
 
@@ -54,7 +55,7 @@ const RHAdmin = () => {
                 </tr>
                 <tr> 
                   <td style={{paddingLeft: '15px', textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Email : 
-                    <b><a style={{color: 'black'}} href="mailto:" title="Send Mail to Agent" /></b>
+                    <b><a/></b>
                   </td>
                   <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Desk : <b /></td>
                   <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Manager : <b /></td>
@@ -70,7 +71,7 @@ const RHAdmin = () => {
               <div className="manageform" style={{fontSize: '13px'}}>
                 <div className="form-frame" style={{display: 'flex', flexDirection: 'row', textAlign: 'center', borderRadius: '5px', bottom: 0}}>
                   <div className="frame1" style={{marginTop: '15px', width: '50%', paddingLeft: '0px', marginLeft: '-30px'}}>
-                    <form action="/rh_admin.php" method="post" onsubmit="return validateForm()">
+                    <form action="" method="post" >
                       <div className="form-floating" style={{margin: '12px'}}>
                         <input type="number" name="search-id" className="form-control  purple-border shadow-effect" id="floatingID" required placeholder="User ID Numeric Value" minLength={6} readOnly="readonly" title="Minimimum 6 Numric Characters" />
                         <label htmlFor="floatingID">ID</label>
@@ -89,14 +90,15 @@ const RHAdmin = () => {
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
                         <input type="text" name="update-manager" className="form-control  purple-border shadow-effect" id="floatingManger" required placeholder="Employee Manager" />
-                        <label htmlFor="floatingManger">Manger</label>
+                        <label htmlFor="floatingManger">Manager</label>
                         <span id="unit-container" style={{display: 'none'}} />
                       </div>
+                    
                     </form>
                   </div>
                   <div className="frame2" style={{marginTop: '15px', width: '50%', paddingLeft: '80px'}}>
                     <form action="/rh_admin.php" method="post" onsubmit="return validateForm()">
-                      <div className="form-floating" style={{margin: '12px'}}>
+                    <div className="form-floating" style={{margin: '12px'}}>
                         <input type="number" defaultvalue placeholder="Employee NID" className="form-control shadow-effect purple-border" id="floatingNID" required />
                         <label htmlFor="floatingNID">NID</label>
                       </div>
@@ -104,17 +106,19 @@ const RHAdmin = () => {
                         <input type="number" placeholder="Employee Salary Only Number Allowed" className="form-control shadow-effect purple-border" id="floatingSalary" required />
                         <label htmlFor="floatingSalary">Salary</label>
                       </div>
+                     
                       <div className="form-floating" style={{margin: '12px'}}>
+                        <input type="text" className="form-control shadow-effect purple-border" id="floatingTitle" required placeholder="Employee Title" />
+                        <label htmlFor="floatingTitle">Title</label>
+                      </div>
+                     
+                    <div className="form-floating" style={{margin: '12px'}}>
                         <input type="date" placeholder="Employee Start Date" className="form-control shadow-effect purple-border" id="floatingDate" required />
                         <label htmlFor="floatingDate" style={{fontSize: '14.5px'}}>Start Date</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
                         <input type="date" placeholder="Employee End Date" className="form-control shadow-effect purple-border " id="floatingDate" required />
                         <label htmlFor="floatingDate" style={{fontSize: '14.5px'}}>End Date</label>
-                      </div>
-                      <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="text" className="form-control shadow-effect purple-border  " id="floatingTitle" required placeholder="Employee Title" />
-                        <label htmlFor="floatingTitle">Title</label>
                       </div>
                     </form>
                   </div>
@@ -123,7 +127,7 @@ const RHAdmin = () => {
               <br />
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '2%', marginLeft: '3%'}}>
                 {/* <button type="submit" className="btn btn-purple " style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%'}}>SAVE</button> */}
-                <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%',backgroundColor: 'rgb(88, 3, 88)'}} >SEND</Button>
+                <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '8%', paddingRight: '8%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%',backgroundColor: 'rgb(88, 3, 88)'}} >SEND</Button>
 
               </div> 
             </div>

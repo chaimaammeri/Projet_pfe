@@ -1,30 +1,36 @@
 import express from 'express' 
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import adminRoutes from './Routes/AdminM.js'   // adminRoutes est le nom que j'ai donnée au page admin manage dans la page server.js  
-import agentRoutes from './Routes/AgentM.js'
 import authRoutes from './Routes/Auth.js'
-import botRoutes from './Routes/BotM.js'
+import adminprofilRoutes from './Routes/AdminProfil.js';
+import userRoutes from './Routes/UserM.js'   // adminRoutes est le nom que j'ai donnée au page admin manage dans la page server.js  
+import agentlistRoutes from './Routes/AgentL.js'
+import agentRoutes from './Routes/AgentM.js'
+import userlistRoutes from './Routes/UserL.js'
 import deskRoutes from './Routes/DeskM.js'
-import homeRoutes from './Routes/Home.js'
 import rhadminRoutes from './Routes/RHAdmin.js'
 import rhreportRoutes from './Routes/RHReport.js'
+import cookieParser from 'cookie-parser';
 
 
 const app = express()
 app.use(express.json())
-
-app.use("/backend/Routes",adminRoutes)   // adminRoutes est le nom du fichier 'adminM' importer 
-app.use("/backend/Routes",agentRoutes)
-app.use("/backend/Routes",authRoutes)
-app.use("/backend/Routes",botRoutes)
-app.use("/backend/Routes",deskRoutes)
-app.use("/backend/Routes",homeRoutes)
-app.use("/backend/Routes",rhadminRoutes)
-app.use("/backend/Routes",rhreportRoutes)
+app.use(cookieParser())
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
+app.use("/backend/Routes",authRoutes)
+app.use("/backend/Routes",adminprofilRoutes)
+app.use("/backend/Routes",userRoutes)   // adminRoutes est le nom du fichier 'userM' importer 
+app.use("/backend/Routes",userlistRoutes)   // adminRoutes est le nom du fichier 'userM' importer 
+app.use("/backend/Routes",agentlistRoutes)
+app.use("/backend/Routes",agentRoutes)
+app.use("/backend/Routes",deskRoutes)
+app.use("/backend/Routes",rhadminRoutes)
+app.use("/backend/Routes",rhreportRoutes)
+
 
 // This will handle any errors that occur in your routes and send an error response to the client.
 app.use((err, req, res, next) => {
