@@ -9,22 +9,23 @@ const AdminProfil = () => {
         <Header></Header>
      <div className="wrapper" >
   <div className="left">
-    <img className="pic" src={luffyjeune} alt='admin'  width={100} />
-
-    <h5>Chaima Ammeri</h5>
-    <p>Web Developer</p>
+  <div style={{marginTop:'60px'}}>
+      <img className="pic" src={luffyjeune} alt='admin'  width={100}  />
+    
+      <h6>Web Developer</h6>
+  </div>
   </div>
   <div className="right">
     <div className="info">
       <h3>Informations</h3>
       <div className="info_data">
         <div className="data">
-          <h4>ID</h4>
-          <p>125469</p>
+          <h4>FirstName</h4>
+          <p>Chaima</p>
         </div>
         <div className="data">
-          <h4>Email</h4>
-          <p>chaimaammeri@gmail.com</p>
+          <h4>LastName</h4>
+          <p>Ammeri</p>
         </div>
       </div>
     </div>
@@ -32,12 +33,12 @@ const AdminProfil = () => {
       <h3 />
       <div className="projects_data">
         <div className="data">
-          <h4>Phone</h4>
+          <h4>ID</h4>
           <p>26369874</p>
         </div>
         <div className="data">
-          <h4>Adress</h4>
-          <p>Ariana ....</p>
+          <h4>Email</h4>
+          <p>chaimaammeri@gmail.com</p>
         </div>
       </div>
     </div>

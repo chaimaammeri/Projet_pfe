@@ -1,73 +1,29 @@
-import Button from '@mui/material/Button';
+import { Button, TextField } from '@mui/material';
 import React from 'react';
-import { Link, NavLink} from "react-router-dom";
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import SendIcon from '@mui/icons-material/Send';
+
 const RHAdmin = () => {
   return (
-      <div>
-         <div className="data-main" style={{width: '99%', position: 'relative'}}> 
-        <div className="search-menue">
-          <b style={{position: 'absolute', color: 'white', left: '-56px', marginTop: '1.5%', transform: 'rotate(-90deg)', fontSize: '46px', letterSpacing: '2px', padding: '10px 26px 10px 26px', marginRight: '-90%', fontFamily: '"Bauhaus93, sans-serif"'}}>DXC</b>
-          <b style={{color: 'black', textAlign: 'left', marginTop: '3%', transform: 'rotate(-90deg)', float: 'left', fontSize: '16px', letterSpacing: '2px', backgroundColor: 'white', padding: '8px 19px 8px 19px', fontFamily: '"Bauhaus93, sans-serif"'}}>technology</b>
-          <div className="fixe" style={{marginLeft: '360px', marginTop:'33px'}}>
-            <form action="/rh_admin.php" method="post" style={{textAlign: 'left', marginLeft: '50px', marginTop: '20px'}}>
-              <span style={{fontSize: '23px', fontFamily: '"Bauhaus93'}}>Search 
-                <input type="text" id="search" onkeyup="crunchy(this.value)" name="search" className="form-create no-focus-outline" placeholder="Search" minLength={3} style={{width: '300px', marginLeft: '7px', height: '34px', fontSize: '15px', borderRadius: '10px black'}} title="Search" />
-                <span id="container" style={{position: 'absolute', zIndex: 3, backgroundColor: 'white', color: 'black', padding: '4px', borderRadius: '4px', fontSize: '13px', display: 'none', marginTop: '20px'}} />
+    <div>
+      <Header></Header>
+<div style={{marginTop:'120px',display:'inline-block',marginBottom:'60px'}}>
 
-                {/* <input type="submit" defaultValue="Show" className="btn btn-purple"  name="shows"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'solid 1px #0a0a0a'}} />
-                <input  type="reset" defaultValue="Reset" className="btn btn-success"  style={{marginLeft: '30px', height: '40px', fontSize: '15px', border: 'none',backgroundColor:'olivedrab'}}/> */}
-                {/* <button className="btn btn-purple" style={{marginLeft: '30px', height: '40px', fontSize: '15px'}} onclick="">
-                  <span style={{fontSize: '20px', letterSpacing: '7px'}}>⎙</span> Print 
-                </button> */}
+  <TextField label="ID" placeholder='search' id="standard-basic" variant="standard" color='secondary' focused style={{margin:'10px',width:'180px'}}/>
+  <Button size="small" variant="contained" style={{marginTop:'30px',backgroundColor:'olivedrab'}}>search</Button>
+  <TextField label="First Name" id="standard-basic"  color='secondary' variant="standard" focused style={{margin:'18px',width:'250px'}}/>
+  <TextField label="Last Name" id="standard-basic"  color='secondary'  variant="standard"  focused style={{margin:'18px',width:'250px'}}/>
+  <br></br>
+  <TextField label="Email"  variant="standard"  color='secondary' focused style={{margin:'15px',width:'250px'}}/>
+  <TextField label="Desk"  variant="standard"  color='secondary' focused style={{margin:'15px',width:'250px'}}/>
+  <TextField label="Manager"  variant="standard"  color='secondary'  focused style={{margin:'15px',width:'250px'}}/>
+  
+</div>
 
-                <div className="btn-group" style={{marginLeft: '700px',marginTop:'-6.5%'}}>
-                  <button type="button" className="btn btn-purple">Human Resources</button>
-                  <button type="button" className="btn btn-purple dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span className="visually-hidden">Toggle Dropdown</span></button>
-                  <ul className="dropdown-menu">
-                    <li> <NavLink className="dropdown-item" to="/RHAdmin">RH Admin</NavLink></li>
-                    <li> <NavLink className="dropdown-item" to="/RHReport">RH Report </NavLink> </li>
-                    <li> <hr className="dropdown-divider" /></li>
-                    <li> <NavLink className="dropdown-item" to="/AdminProfil">Admin Profil</NavLink> </li>
-                  </ul>
-                </div>
-
-
-              </span>                  
-            </form>
-          </div>
-        </div> 
-        <div className="data-main-frame">
-          <div className="item">   
-            <table style={{fontSize: '15px', width: '100%', height: '100%', borderCollapse: 'collapse', textAlign: 'left'}}>
-              <tbody>
-                <tr>
-                  <td style={{paddingLeft: '15px', textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>ID : 
-                    <b style={{color: 'black', textDecoration: 'underline', letterSpacing: '2px', fontFamily: 'arial'}} />
-                  </td>
-                  <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>FirstName : 
-                    <b style={{color: 'black', textDecoration: 'underline', letterSpacing: '2px', fontFamily: 'arial', textAlign: 'center'}} />
-                  </td>
-                  <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>LastName : 
-                    <b style={{color: 'black', textDecoration: 'underline', letterSpacing: '2px', fontFamily: 'arial', textAlign: 'center'}} />
-                  </td>
-                </tr>
-                <tr> 
-                  <td style={{paddingLeft: '15px', textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Email : 
-                    <b><a/></b>
-                  </td>
-                  <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Desk : <b /></td>
-                  <td style={{textAlign: 'left', letterSpacing: '5px', fontSize: '18px'}}>Manager : <b /></td>
-                </tr>
-              </tbody>
-            </table>          
-          </div>      
-        </div>  
-        <div className="main-manage22">
-          <div className="shadow-effect">
+<div className="main-manage22" style={{width:'80%' , marginLeft: '140px',}}>
             <div className="manage" style={{marginLeft: '8px', width: '100%'}}>
-              <div className="managetitle2" style={{marginLeft: '0px'}}>MODIFY EMPLOYEE</div>
+              <div className="managetitle2" style={{marginLeft: '0px',color:'black'}}>MODIFY EMPLOYEE</div>
               <div className="manageform" style={{fontSize: '13px'}}>
                 <div className="form-frame" style={{display: 'flex', flexDirection: 'row', textAlign: 'center', borderRadius: '5px', bottom: 0}}>
                   <div className="frame1" style={{marginTop: '15px', width: '50%', paddingLeft: '0px', marginLeft: '-30px'}}>
@@ -126,16 +82,14 @@ const RHAdmin = () => {
               </div>
               <br />
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '2%', marginLeft: '3%'}}>
-                {/* <button type="submit" className="btn btn-purple " style={{paddingLeft: '11%', paddingRight: '11%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%'}}>SAVE</button> */}
-                <Button variant="contained" color="secondary" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '8%', paddingRight: '8%', letterSpacing: '5px', marginBottom: '3%', marginTop: '4%',backgroundColor: 'rgb(88, 3, 88)'}} >SEND</Button>
+                <Button variant="contained" color="success" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '8%', paddingRight: '8%', letterSpacing: '5px', marginBottom: '0%', marginTop: '4%',}} >SEND</Button>
 
               </div> 
             </div>
-          </div> 
+          
         </div>
-        <div><footer style={{textAlign: 'center', marginBottom: '40px', marginLeft: '10px', fontSize: '30px', letterSpacing: '5px', padding: '5px', color: 'rgb(0, 0, 0)', position: 'relative', width: '100%'}}>DXC Technology<sup> ©</sup></footer></div>
-      </div>  
-      </div>
+<Footer></Footer>
+    </div>
   );
 }
 

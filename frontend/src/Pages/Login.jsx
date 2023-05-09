@@ -1,8 +1,6 @@
 import * as React from 'react'; 
 import Button from '@mui/material/Button';
-import { Link} from "react-router-dom";
 import logo from "../Img/logo.bmp"
-import Footer from '../Components/Footer';
 import axios from 'axios';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,19 +17,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const theme = createTheme();
-function Copyright(props) {
-return (
-<Typography variant="body2" color="text.secondary" align="center" {...props}>
-{'Copyright '}
-<Link color="inherit" href="http://localhost:3000/AdminProfil">
-DXC Technology
-</Link>{' '}
-{new Date().getFullYear()}.
-</Typography>
-);}
-
-
-
 
 const Login = () => {
   const [inputs, setInputs] =  useState({
@@ -85,12 +70,11 @@ return (
    </Box>
    </Box>
    <Box sx={{ mt: 5, mb: 4 }}>
-   <Copyright />
    </Box>
    </Container>
    </ThemeProvider>
    <br></br>
-   <Footer></Footer>
+   <footer className="footAD">DXC Technology<sup> ©</sup></footer>
  </div>
 );
 }

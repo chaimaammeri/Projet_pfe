@@ -1,20 +1,4 @@
- 
-/* ------------------------------- */
- .footAD{
-  text-align: center;
-  font-size: 18px;
-  letter-spacing: 4px;
-  padding: 5px; 
-  color: rgb(245, 243, 243);
-  background-color: black;
-  box-shadow: 3px 3px 15px black;
-  opacity: 0.8;
-  font-family: 'Bauhaus93, sans-serif';
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
- /* ---------------------rh admin------------------------------------------------------------ */
+/* ---------------------rh admin------------------------------------------------------------ */
  .search-menue{ 
     background-color: rgb(0, 0, 0);
     color: white; 
@@ -40,10 +24,6 @@
   top: 100px;
   margin-top: 2%;
   padding: 15px;
-  /* border-top :solid 1px rgb(8, 8, 8) ;
-  border-bottom :solid 1px rgb(0, 0, 0) ;
-  border-bottom :solid 1px rgb(0, 0, 0) ;
-  box-shadow: 3px 3px 15px black; */
   opacity: 0.75s;
   }
     .item{
@@ -52,19 +32,13 @@
         height:100px;
         width:90%;
         position: absolute;
-        /* border-left: solid 1px white; */
     }
     
-  .main-manage22{
-    position: sticky;
-    width:70%; 
-    z-index: 1;
-    background-color: whitesmoke;
-    box-shadow: 2px 2px 14px black;
-    margin-left: 210px;
-    margin-top: 19%;
-    margin-bottom: 5%;
-  }/* shadow effect dans agent manage  */
+    .main-manage22{
+      border: 1px solid rgb(182, 178, 178);
+      margin-bottom: 30px;
+    }
+
   /* ----------agent manage & user manage & desk manage ------------------------------------------- */
   .main-manage2{
     display: grid;
@@ -75,13 +49,14 @@
     justify-content: space-between;
     border: rgb(153, 151, 151) solid 1px;
     border-radius: 4px;
-   
     z-index: 1;
     width: 78%;
     height: 120%;
     margin: 150px 0  5% 160px ;
   }
-  .main-manage2> .shadow-effect,.main-manage22> .shadow-effect {
+  .main-manage2> .shadow-effect{
+  /* .main-manage22> .shadow-effect  */
+  
   box-shadow: 0 0 7px 3px rgba(226, 209, 235, 0.42) ;
   border-color: rgba(226, 209, 235, 0.42);
   border-radius: 9px;
@@ -116,8 +91,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
     column-gap: 10px;
-    /* column-gap: 20px;
-    row-gap:10px ;   AGENT CTI CHECK */
+
   }
   .form-floating>.form-select {background-color: rgb(251, 248, 248);}
   .manageform {
@@ -157,101 +131,8 @@
   border-color: rgba(153, 50, 204, 0.5) ;
   }
   
-  /* -------------agent request---------------- */
-  .request-container {
-    align-content: center;
-    margin: 130px 10px 0px 110px;
-    width: 85%;
-    border-radius: 9px;
-    border:none;
-    position: relative;
-    z-index: 1;
-    background-color: rgba(245, 245, 245, 0.307);
-  } 
-  .request-container> .shadow-effect ,.im> .shadow-effect{
-  box-shadow: 0 0 7px 3px rgba(226, 209, 235, 0.613) ;
-  border-color: rgba(226, 209, 235, 0.613);
-  border-radius: 9px;
-  }
-  .request {
-  display: grid;
-  grid-template-rows: 30px 80%;
-  column-gap: 8px;
-  grid-row-gap: 2px;
-  color: black;
-  font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 30px;
-  margin: 0px auto;
-  height: auto;
-  width: 100%;
-  padding-top: 20px;
-  }
-  .request-item1 {
-  text-align: left;
-  color: olivedrab;
-  font-weight: bold;
-  margin: 0px 2px 20px 2px;
-  font-family: 'Bauhaus93, sans-serif';
-  font-size: 2.3vw;
-  letter-spacing: 1px;
-  height: 40px;
-  padding-bottom: 30px;
-  }
   
-  .request-item2 {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
-  text-align: left;
-  height: 100%;
-  font-size: 22px;
-  margin-left: 2%;
-  margin-top: 3%;
-  }
-  .dynamic-table2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
-  border: 0px;
-  margin-top: 0px;
-  font-size: 16px;
-  font-weight: normal;
-  width: 99.4%;
-  }
-  
-  .dynamic-table2 tr:nth-child(even) {
-  background-color: #e1e1e2;
-  }
-  .caption {
-  border: 0px;
-  text-align: left;
-  color: olivedrab;
-  margin-top: -270px;
-  margin-left: 3px;
-  padding: 5px;
-  box-sizing: border-box;
-  height: 36px;
-  line-height: 28px;
-  border-left: 2px solid olivedrab;
-  font-weight: bold;
-  font-family: 'Bauhaus93, sans-serif';
-  font-size: 2.0vw;
-  letter-spacing: 1px;
-  height: 40px;
-  }
-  
-  /* --------login----------- */
-  .Login:hover{
-border-color: grey;
-  }
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:hover{
-border-color: grey;
-
-  }
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus{
-    border-color: rgb(106, 5, 106);
-  }
-  /* ---------------loginside------------------ */
+  /* ---------------loginside------------------
   .vl {
     border-left: 1px dashed rgb(194, 191, 191);
     text-align: right;
@@ -305,7 +186,7 @@ border-color: grey;
 .form-menue {
     margin-left: 30px;
     text-align: center;
-}
+} */
 /* ------------------Admin profile-------------- */
 .adm{
   background-color: rgb(203, 201, 201);
@@ -350,9 +231,7 @@ font-size: 14px;
   border-bottom-right-radius: 5px;
   padding: 30px 25px;
 }
-.info{
 
-}
 .wrapper .right .info ,.wrapper .right .projects{
   margin-bottom: 33px;
 }
@@ -413,9 +292,7 @@ letter-spacing: 5px;
 .table_header {
   width: 100%;
   height: 10%;
-  /* color: olivedrab; */
   background-color: #fff5;
-  /* opacity: 0.9; */
   padding: .8rem 1rem;
 }
 
@@ -463,3 +340,20 @@ thead th {
 .tbody .tr:hover {
   background-color: #fff6;
 }
+ 
+/* --------------footerAD----------------- */
+.footAD{
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 4px;
+  padding: 5px; 
+  color: rgb(245, 243, 243);
+  background-color: black;
+  box-shadow: 3px 3px 15px black;
+  opacity: 0.8;
+  font-family: 'Bauhaus93, sans-serif';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+ 
