@@ -1,19 +1,14 @@
 import db from "../db.js"
 import pkg from 'jsonwebtoken'
 const {jwt} =pkg
+import bcrypt from 'bcryptjs'
 
 export const login = (req, res) => {
   // CHECK   administrator
 
-  const q = "SELECT * FROM administrator WHERE email=?";
-  // const values =[
-    
-  // ]
-  // hash a password 
-  // const salt = bcrypt.genSaltSync(10);
-  // const hash = bcrypt.hashSync(req.body.password, salt);
+  const q = "SELECT * FROM administrator WHERE email=? AND password = ? ";
   
-  db.query(q, [req.body.email], (err, data) => {
+  db.query(q, [req.body.email, req.body.password], (err, data) => {
     if (err)  return res.json(err);
     if (data.length === 0)  return res.status(404).json("Administrator not found");
     
@@ -38,3 +33,20 @@ export const login = (req, res) => {
 export const logout = (req, res) =>{
 
 };
+
+
+
+
+
+// export const login = (req, res) => {
+//   // CHECK   administrator
+
+//   const q = "SELECT * FROM administrator WHERE email=? AND password = ? ";
+//   db.query(q, [req.body.email, req.body.password], (err, data) => {
+//     if (err)  return res.json(err);
+//     if (data.length > 0) {
+//       return res.json({Status: "Administrator not found"});
+//     } else {
+//       return res.json({Status: "Success"});
+//     }
+    

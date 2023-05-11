@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import axios from 'axios';
-import backgroundImg from '../Img/back.jpg';
 
 
-export default class UserList extends Component  {
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         employee:[]
-    //     }
-    // }
-    // componentDidMount(){
-    //     axios.get('http://localhost:3000/RHReport').then((data)=>this.setState({employee:data.data}))
 
-    // }
-
-    render() {
-        return (
+const UserList = () =>  {
+  
+  const [user, setUser] = useState([]);
+  
+  useEffect(() => {
+  const fetchAllUser = async () => {
+  try {
+  const res = await axios.get("http://localhost:3001/UserList");
+  setUser(res.data);
+  } catch(err) {
+  console.log(err);
+  }
+  };
+  fetchAllUser();
+  }, []);
+  
+          return (
             <div>
             <Header />
-            {/* {this.state.products.map((item,key)=>{ */}
-
-            {/* })} */}
-            {/* <div className='bodyy'> */}
-
             <div className='bodyy'>
   <main className="main"  >
   <section className="table_header" >
@@ -45,76 +43,29 @@ export default class UserList extends Component  {
           <th className='th'>Phone</th>
           <th className='th'>Desk</th>
           <th className='th'>Status</th>
+          <th className='th'>Privilége</th>
+          <th className='th'>Language</th>
+
         </tr>
       </thead>
       <tbody className='tbody'>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>**************</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>**************</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>**************</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>**************</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>**************</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-       
-      </tbody>
+  {user.map((row, index) => (
+    <tr className='tr' key={index}>
+      <td className='td'><strong>{row.ID_Us}</strong></td>
+      <td className='td'>{row.FirstName_Us}</td>
+      <td className='td'>{row.LastName_Us}</td>
+      <td className='td'>{row.Email_Us}</td>
+      <td className='td'>{row.Password_Us}</td>
+      <td className='td'>{row.Adress_Us}</td>
+      <td className='td'>{row.Phone_Us}</td>
+      <td className='td'>{row.Desk_Us}</td>
+      <td className='td'>{row.Status_Us}</td>
+      <td className='td'>{row.Privilége_Us}</td>
+      <td className='td'>{row.Language_Us}</td>
+
+    </tr>
+  ))}
+</tbody>
     </table>
   </section>
 </main>
@@ -123,5 +74,7 @@ export default class UserList extends Component  {
    </div>
    <Footer></Footer>
           </div>
-        );
-        }}
+      );
+    };
+    
+    export default UserList;

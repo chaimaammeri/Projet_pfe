@@ -1,31 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import axios from 'axios';
-import backgroundImg from '../Img/phot.jpg';
 
 
-export default class AgentList extends Component  {
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         employee:[]
-    //     }
-    // }
-    // componentDidMount(){
-    //     axios.get('http://localhost:3000/RHReport').then((data)=>this.setState({employee:data.data}))
+const AgentList = () =>  {
+  
+const [agent, setAgent] = useState([]);
 
-    // }
+useEffect(() => {
+const fetchAllAgent = async () => {
+try {
+const res = await axios.get("http://localhost:3001/AgentList");
+setAgent(res.data);
+} catch(err) {
+console.log(err);
+}
+};
+fetchAllAgent();
+}, []);
 
-    render() {
         return (
             <div>
             <Header />
-            {/* {this.state.products.map((item,key)=>{ */}
-
-            {/* })} */}
-            {/* <div className='bodyy'> */}
-
             <div className='bodyy' >
   <main className="main">
   <section className="table_header" >
@@ -41,74 +38,30 @@ export default class AgentList extends Component  {
           <th className='th'>Last Name</th>
           <th className='th'>Email</th>
           <th className='th'>Adress</th>
-          <th className='th'>Phone</th>
           <th className='th'>Desk</th>
+          <th className='th'>Phone</th>
           <th className='th'>Status</th>
+          <th className='th'>Unit</th>
+          <th className='th'>Language</th>
+
         </tr>
       </thead>
       <tbody className='tbody'>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-        <tr className='tr'>
-          <td className='td'>
-            <strong>122365478</strong>
-          </td>
-          <td className='td'>chaima</td>
-          <td className='td'>ammeri</td>
-          <td className='td'>chaimaammeri@gmail.com</td>
-          <td className='td'>Ariana</td>
-          <td className='td'>25478639</td>
-          <td className='td'>Renault</td>
-          <td className='td'>Activated</td>
-        </tr>
-       
-      </tbody>
+  {agent.map((row, index) => (
+    <tr className='tr' key={index}>
+      <td className='td'><strong>{row.ID_Agent}</strong></td>
+      <td className='td'>{row.FirstName_Ag}</td>
+      <td className='td'>{row.LastName_Ag}</td>
+      <td className='td'>{row.Email_Ag}</td>
+      <td className='td'>{row.Adress_Ag}</td>
+      <td className='td'>{row.Desk_Ag}</td>
+      <td className='td'>{row.Phone_Ag}</td>
+      <td className='td'>{row.Status_Ag}</td>
+      <td className='td'>{row.Unit_Ag}</td>
+      <td className='td'>{row.Language_Ag}</td>
+    </tr>
+  ))}
+</tbody>
     </table>
   </section>
 </main>
@@ -117,5 +70,7 @@ export default class AgentList extends Component  {
    </div>
    <Footer></Footer>
           </div>
-        );
-        }}
+       );
+      };
+      
+      export default AgentList;

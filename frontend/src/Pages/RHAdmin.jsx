@@ -1,25 +1,137 @@
 import { Button, TextField } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import SendIcon from '@mui/icons-material/Send';
+import axios from 'axios';
 
-const RHAdmin = () => {
+function  RHAdmin()  {
+  const [ID_Emp, setId] = useState('');
+  const [FirstName_Emp, setFirstName] = useState('');
+  const [LastName_Emp, setLastName] = useState('');
+  const [Email_Emp, setEmail] = useState('');
+  const [NID, setDesk] = useState('');
+  const [Manager_Emp, setManager] = useState('');
+
+  const handleSearch = async () => {
+    try {
+      const res = await axios.get(`http://localhost:3001/RHAdmin/${ID_Emp}`);
+      const { FirstName_Emp, LastName_Emp, Email_Emp, NID,Manager_Emp } = res.data;
+      setFirstName(FirstName_Emp);
+      setLastName(LastName_Emp);
+      setEmail(Email_Emp);
+      setDesk(NID);
+      setManager(Manager_Emp);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  // ---------------------------------
+ const[data, setData] = useState({
+  ID_Emp:'',
+  FirstName_Emp:'',
+  LastName_Emp:'',
+  Email_Emp:'',
+  Manager_Emp:'',
+  NID:'',
+  Salary_Emp:'',
+  Title_Emp:'',
+  StartDate:'',
+  EndDate:''
+
+ })
+ const handleSubmit = (event) => {
+  event.preventDefault();
+  const formdata = new FormData();
+  formdata.append("ID_Emp", data.ID_Emp);
+  formdata.append("FirstName_Emp", data.FirstName_Emp);
+  formdata.append("LastName_Emp", data.LastName_Emp);
+  formdata.append("Email_Emp", data.Email_Emp);
+  formdata.append("Manager_Emp", data.Manager_Emp);
+  formdata.append("NID", data.NID);
+  formdata.append("Salary_Emp", data.Salary_Emp);
+  formdata.append("Title_Emp", data.Title_Emp);
+  formdata.append("StartDate", data.StartDate);
+  formdata.append("EndDate", data.EndDate);
+  axios.post('http://localhost:3001/RHAdmin', formdata)
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+ }
+
   return (
     <div>
       <Header></Header>
-<div style={{marginTop:'120px',display:'inline-block',marginBottom:'60px'}}>
-
-  <TextField label="ID" placeholder='search' id="standard-basic" variant="standard" color='secondary' focused style={{margin:'10px',width:'180px'}}/>
-  <Button size="small" variant="contained" style={{marginTop:'30px',backgroundColor:'olivedrab'}}>search</Button>
-  <TextField label="First Name" id="standard-basic"  color='secondary' variant="standard" focused style={{margin:'18px',width:'250px'}}/>
-  <TextField label="Last Name" id="standard-basic"  color='secondary'  variant="standard"  focused style={{margin:'18px',width:'250px'}}/>
-  <br></br>
-  <TextField label="Email"  variant="standard"  color='secondary' focused style={{margin:'15px',width:'250px'}}/>
-  <TextField label="Desk"  variant="standard"  color='secondary' focused style={{margin:'15px',width:'250px'}}/>
-  <TextField label="Manager"  variant="standard"  color='secondary'  focused style={{margin:'15px',width:'250px'}}/>
-  
-</div>
+      <div style={{marginTop:'120px',display:'inline-block',marginBottom:'60px'}}>
+      <TextField
+        label="ID"
+        placeholder="search"
+        id="standard-basic"
+        variant="standard"
+        color="secondary"
+        focused
+        style={{margin:'10px',width:'180px'}}
+        value={ID_Emp}
+        onChange={(e) => setId(e.target.value)}
+      />
+      <Button
+        size="small"
+        variant="contained"
+        style={{marginTop:'30px',backgroundColor:'olivedrab'}}
+        onClick={handleSearch}
+      >
+        search
+      </Button>
+      <TextField
+        label="First Name"
+        id="standard-basic"
+        color="secondary"
+        variant="standard"
+        focused
+        style={{margin:'18px',width:'250px'}}
+        value={FirstName_Emp}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <TextField
+        label="Last Name"
+        id="standard-basic"
+        color="secondary"
+        variant="standard"
+        focused
+        style={{margin:'18px',width:'250px'}}
+        value={LastName_Emp}
+        onChange={(e) => setLastName(e.target.value)}
+      />
+      <br />
+      <TextField
+        label="Email"
+        variant="standard"
+        color="secondary"
+        focused
+        style={{margin:'15px',width:'250px'}}
+        value={Email_Emp}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <TextField
+        label="Desk"
+        variant="standard"
+        color="secondary"
+        focused
+        style={{margin:'15px',width:'250px'}}
+        value={NID}
+        onChange={(e) => setDesk(e.target.value)}
+      />
+      <TextField
+        label="Manager"
+        variant="standard"
+        color="secondary"
+        focused
+        style={{margin:'15px',width:'250px'}}
+        value={Manager_Emp}
+        onChange={(e) => setManager(e.target.value)}
+      />
+    </div>
 
 <div className="main-manage22" style={{width:'80%' , marginLeft: '140px',}}>
             <div className="manage" style={{marginLeft: '8px', width: '100%'}}>
@@ -27,54 +139,53 @@ const RHAdmin = () => {
               <div className="manageform" style={{fontSize: '13px'}}>
                 <div className="form-frame" style={{display: 'flex', flexDirection: 'row', textAlign: 'center', borderRadius: '5px', bottom: 0}}>
                   <div className="frame1" style={{marginTop: '15px', width: '50%', paddingLeft: '0px', marginLeft: '-30px'}}>
-                    <form action="" method="post" >
+                     <form  onSubmit={handleSubmit}>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="number" name="search-id" className="form-control  purple-border shadow-effect" id="floatingID" required placeholder="User ID Numeric Value" minLength={6} readOnly="readonly" title="Minimimum 6 Numric Characters" />
-                        <label htmlFor="floatingID">ID</label>
+                        <input type="number" id="id_emp"  onChange={e => setData({...data, ID_Emp: e.target.value})} name="search-id" className="form-control  purple-border shadow-effect"  placeholder="User ID Numeric Value" minLength={6} title="Minimimum 6 Numric Characters" />
+                        <label htmlFor="id_emp">ID</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="text" className="form-control  purple-border shadow-effect" id="floatingName" required name="update-firstName" placeholder="Employee firstName" />
-                        <label htmlFor="floatingName">FirstName</label>
+                        <input type="text" id="name_emp" onChange={e => setData({...data, FirstName_Emp: e.target.value})} className="form-control  purple-border shadow-effect"   name="update-firstName" placeholder="Employee firstName" />
+                        <label htmlFor="name_emp">FirstName</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="text" className="form-control  purple-border shadow-effect" id="floatingLastName" required name="update-lastName" placeholder="Employee LasttName" />
-                        <label htmlFor="floatingLastName">LastName</label>
+                        <input type="text" id="last_emp" onChange={e => setData({...data,  LastName_Emp: e.target.value})} className="form-control  purple-border shadow-effect"  name="update-lastName" placeholder="Employee LasttName" />
+                        <label htmlFor="last_emp">LastName</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="email" name="update-email" className="form-control  purple-border shadow-effect" id="floatingEmail" required placeholder="Employee Email" />
-                        <label htmlFor="floatingEmail">Email</label>
+                        <input type="email"  id="email_emp"  onChange={e => setData({...data, Email_Emp: e.target.value})} name="update-email" className="form-control  purple-border shadow-effect"placeholder="Employee Email" />
+                        <label htmlFor="email_emp">Email</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="text" name="update-manager" className="form-control  purple-border shadow-effect" id="floatingManger" required placeholder="Employee Manager" />
-                        <label htmlFor="floatingManger">Manager</label>
-                        <span id="unit-container" style={{display: 'none'}} />
+                        <input type="text" id="manager_emp" onChange={e => setData({...data,  Manager_Emp: e.target.value})} name="update-manager" className="form-control  purple-border shadow-effect" placeholder="Employee Manager" />
+                        <label htmlFor="manager_emp">Manager</label>
                       </div>
                     
                     </form>
                   </div>
                   <div className="frame2" style={{marginTop: '15px', width: '50%', paddingLeft: '80px'}}>
-                    <form action="/rh_admin.php" method="post" onsubmit="return validateForm()">
+                    <form  onSubmit={handleSubmit}>
                     <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="number" defaultvalue placeholder="Employee NID" className="form-control shadow-effect purple-border" id="floatingNID" required />
-                        <label htmlFor="floatingNID">NID</label>
+                        <input type="number" id="NID_emp"  onChange={e => setData({...data,  NID: e.target.value})}  placeholder="Employee NID" className="form-control shadow-effect purple-border"  />
+                        <label htmlFor="NID_emp">NID</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="number" placeholder="Employee Salary Only Number Allowed" className="form-control shadow-effect purple-border" id="floatingSalary" required />
-                        <label htmlFor="floatingSalary">Salary</label>
+                        <input type="number" id="salary_emp" onChange={e => setData({...data, Salary_Emp: e.target.value})} placeholder="Employee Salary Only Number Allowed" className="form-control shadow-effect purple-border" />
+                        <label htmlFor="salary_emp">Salary</label>
                       </div>
                      
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="text" className="form-control shadow-effect purple-border" id="floatingTitle" required placeholder="Employee Title" />
-                        <label htmlFor="floatingTitle">Title</label>
+                        <input type="text" id="title_emp"  onChange={e => setData({...data, Title_Emp: e.target.value})} className="form-control shadow-effect purple-border" placeholder="Employee Title" />
+                        <label htmlFor="title_emp">Title</label>
                       </div>
                      
                     <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="date" placeholder="Employee Start Date" className="form-control shadow-effect purple-border" id="floatingDate" required />
-                        <label htmlFor="floatingDate" style={{fontSize: '14.5px'}}>Start Date</label>
+                        <input type="date"  id="date_deb" onChange={e => setData({...data,  StartDate: e.target.value})} placeholder="Employee Start Date" className="form-control shadow-effect purple-border" />
+                        <label htmlFor="date_deb" style={{fontSize: '14.5px'}}>Start Date</label>
                       </div>
                       <div className="form-floating" style={{margin: '12px'}}>
-                        <input type="date" placeholder="Employee End Date" className="form-control shadow-effect purple-border " id="floatingDate" required />
-                        <label htmlFor="floatingDate" style={{fontSize: '14.5px'}}>End Date</label>
+                        <input type="date" id="date_fin" onChange={e => setData({...data,  EndDate: e.target.value})} placeholder="Employee End Date" className="form-control shadow-effect purple-border " />
+                        <label htmlFor="date_fin" style={{fontSize: '14.5px'}}>End Date</label>
                       </div>
                     </form>
                   </div>

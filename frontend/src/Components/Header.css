@@ -44,10 +44,7 @@ header {
     font-family: 'arial';
   }
   a.profile,
-  a.in,
-  a.out,
-  a.logout,
-  a.message {
+  a.logout {
     width: 150px;
     height: 69px;
     background-color: rgba(107, 102, 102, 0.3);
@@ -63,10 +60,7 @@ header {
   }
   
   a.profile:hover,
-  a.in:hover,
-  a.out:hover,
-  a.logout:hover,
-  a.message:hover {
+  a.logout:hover {
     background-color: rgba(126, 153, 175, 0.4);
     border-bottom: 1px solid rgb(207, 202, 202);
   }

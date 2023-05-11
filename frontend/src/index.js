@@ -15,12 +15,12 @@ import RHReport from './Pages/RHReport';
 
 
 const router = createBrowserRouter([
-{ path: "/",
+{ path: "/Login",
 element: <Login></Login>,
 errorElement: <h1>Sorry .......</h1>,
 },
 
-{ path: "/AdminProfil",
+{ path: "/",
 element: <AdminProfil></AdminProfil>, 
 },
 { path: "/UserManage",

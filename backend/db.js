@@ -1,13 +1,19 @@
 import mysql from 'mysql';
-import bcrypt from 'bcryptjs';
-
+import bcrypt from 'bcryptjs'
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Chaimamysql123@',
   database: 'dxctech'
 });
-
+ 
+db.connect(function(err) {
+  if(err) {
+    console.log("Error in connection")
+  }else{
+    console.log("connected")
+  }
+})
 
 const saltRounds = 10;
 
