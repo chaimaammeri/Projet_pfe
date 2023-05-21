@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import Header from '../Components/Header';
+import Header2 from '../Components/Header2';
 import Footer from '../Components/Footer';
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ fetchAllEmployee();
 
 return (
 <div>
-<Header />
+<Header2 />
 <div className='bodyy'>
 <main className="main">
 <section className="table_header">

@@ -1,8 +1,9 @@
-import { Button, TextField } from '@mui/material';
+import { Button, ButtonGroup, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import SendIcon from '@mui/icons-material/Send';
+import DeleteIcon from '@mui/icons-material/Delete'
 import axios from 'axios';
 
 function  RHAdmin()  {
@@ -26,7 +27,6 @@ function  RHAdmin()  {
       console.log(err);
     }
   };
-
 
   // ---------------------------------
  const[data, setData] = useState({
@@ -63,7 +63,7 @@ function  RHAdmin()  {
   return (
     <div>
       <Header></Header>
-      <div style={{marginTop:'120px',display:'inline-block',marginBottom:'60px'}}>
+      <div style={{marginTop:'100px',display:'inline-block',marginBottom:'30px'}}>
       <TextField
         label="ID"
         placeholder="search"
@@ -71,7 +71,7 @@ function  RHAdmin()  {
         variant="standard"
         color="secondary"
         focused
-        style={{margin:'10px',width:'180px'}}
+        style={{margin:'7px',width:'170px'}}
         value={ID_Emp}
         onChange={(e) => setId(e.target.value)}
       />
@@ -89,7 +89,7 @@ function  RHAdmin()  {
         color="secondary"
         variant="standard"
         focused
-        style={{margin:'18px',width:'250px'}}
+        style={{margin:'15px',width:'230px'}}
         value={FirstName_Emp}
         onChange={(e) => setFirstName(e.target.value)}
       />
@@ -99,7 +99,7 @@ function  RHAdmin()  {
         color="secondary"
         variant="standard"
         focused
-        style={{margin:'18px',width:'250px'}}
+        style={{margin:'15px',width:'230px'}}
         value={LastName_Emp}
         onChange={(e) => setLastName(e.target.value)}
       />
@@ -109,7 +109,7 @@ function  RHAdmin()  {
         variant="standard"
         color="secondary"
         focused
-        style={{margin:'15px',width:'250px'}}
+        style={{margin:'15px',width:'230px'}}
         value={Email_Emp}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -118,7 +118,7 @@ function  RHAdmin()  {
         variant="standard"
         color="secondary"
         focused
-        style={{margin:'15px',width:'250px'}}
+        style={{margin:'15px',width:'230px'}}
         value={NID}
         onChange={(e) => setDesk(e.target.value)}
       />
@@ -127,13 +127,13 @@ function  RHAdmin()  {
         variant="standard"
         color="secondary"
         focused
-        style={{margin:'15px',width:'250px'}}
+        style={{margin:'15px',width:'230px'}}
         value={Manager_Emp}
         onChange={(e) => setManager(e.target.value)}
       />
     </div>
 
-<div className="main-manage22" style={{width:'80%' , marginLeft: '140px',}}>
+<div className="main-manage22" style={{width:'68%' , marginLeft: '200px',}}>
             <div className="manage" style={{marginLeft: '8px', width: '100%'}}>
               <div className="managetitle2" style={{marginLeft: '0px',color:'black'}}>MODIFY EMPLOYEE</div>
               <div className="manageform" style={{fontSize: '13px'}}>
@@ -193,8 +193,9 @@ function  RHAdmin()  {
               </div>
               <br />
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '2%', marginLeft: '3%'}}>
-                <Button variant="contained" color="success" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '8%', paddingRight: '8%', letterSpacing: '5px', marginBottom: '0%', marginTop: '4%',}} >SEND</Button>
-
+                {/* <Button variant="contained" color="success" startIcon={<SendIcon/>} type="submit" style={{paddingLeft: '8%', paddingRight: '8%', letterSpacing: '5px', marginBottom: '0%', marginTop: '2%',}} >SEND</Button> */}
+                   <Button variant="contained" color="success" startIcon={<SendIcon/>} type="submit" style={{marginRight:'20px',width:'120px'}} >SEND</Button>
+                   <Button variant="outlined" color="secondary" endIcon={<DeleteIcon />} type="submit">DELETE</Button>
               </div> 
             </div>
           

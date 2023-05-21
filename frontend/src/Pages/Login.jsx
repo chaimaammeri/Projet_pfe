@@ -28,10 +28,10 @@ const [error, setError] = useState('');
 
 const handleSubmit = (event) => {
 event.preventDefault();
-axios.post('http://localhost:3001/Login', values)
+axios.post('http://localhost:3001', values)
 .then(res => {
 if(res.data.Status === 'Success') {
-  navigate('/');
+  navigate('/AdminProfil');
 } else { 
        setError(res.data.Error);
 }

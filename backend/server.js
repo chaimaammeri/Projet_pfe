@@ -5,9 +5,12 @@ import cookieParser from 'cookie-parser'
 import db from './db.js'
 import pkg from 'jsonwebtoken'
 const {jwt} =pkg
-
+import rhreportRoutes from './Routes/RHReport.js'
+ 
 
 const app = express()
+app.use("/RHReport",rhreportRoutes)
+
 app.use(express.json())
 app.use(cookieParser())
 
@@ -17,20 +20,23 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.listen(3001, () => {
   console.log('Connected to backend localhost:3001');
+
+  db.connect(function(err) {
+    if (err) {
+      console.error('Erreur de connexion à la base de données :', err);
+    } else {
+      console.log('Connecté à la base de données');
+    }
+  });
+ 
   });
 // ----------date courante ------------------
   const currentDate = new Date();
 const formattedDate = currentDate.toLocaleString();
 console.log(formattedDate); // outputs something like "3/3/2023, 12:05:12 PM"
+// ---------------------AUTHENTIFICATION-----------------------------------------------------------------
 
-
-// le message affiché dans la page principale 
-app.get("/test", (req, res)=>{
-    res.json("hello this is my first backend")
-  });
-
-
-  app.post('/Login', (req, res) => {
+  app.post('/', (req, res) => {
     const q = "SELECT * FROM administrator WHERE email=? AND password = ? ";
     db.query(q, [req.body.email, req.body.password], (err, result) => {
       if (err)  return res.json({Error: "Error in Server",Error: "Error in running query"});
@@ -53,7 +59,32 @@ app.get("/test", (req, res)=>{
   
   })
   })
-  
+  // ----------------------------SEND NEW DATA TO TO DB-------------------------------------------
+
+
+  app.post('/RHAdmin', (req, res) => {
+    // Insert the employee data into the database
+    const sql = 'INSERT INTO employee (ID_Agent, FirstName_Ag, LastName_Ag, Email_Ag, Adress_Ag, Desk_Ag, Phone_Ag, Status_Ag, Unit_Ag, Language_Ag, Password_Ag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [
+      req.body.ID_Agent ,
+      req.body.FirstName_Ag ,
+      req.body.LastName_Ag ,
+      req.body.Email_Ag ,
+      req.body.Adress_Ag ,
+      req.body.Desk_Ag ,
+      req.body.Phone_Ag ,
+      req.body.Status_Ag ,
+      req.body.Unit_Ag ,
+      req.body.Language_Ag ,
+      req.body.Password_Ag ,
+    ];
+    db.query(sql, values, (err, result) => {
+      if (err) res.json("there is an error");
+        return res.json("Agent has been created successfully");
+    });
+  });
+
+
   app.post('/UserManage', (req, res) => {
     const sql = 'INSERT INTO user (`ID_Emp`,`FirstName_Us`,`LastName_Us`,`Email_Us`,`Password_Us`,`Adress_Us`,`Phone_Us`,`Desk_Us`,`Status_Us`,`Privilége_Us`,`Language_Us`) VALUES (?)'
     bcrypt.hash(req.body.Password_Us.toString(), 10, (err,hash) => {
@@ -79,8 +110,93 @@ app.get("/test", (req, res)=>{
     })
 
   })
+  
+  // app.post('/AgentManage', (req, res) => {
+  //   const formData = req.body; // Données envoyées depuis le frontend
+  
+  //   // Insérer les données dans la base de données
+  //   db.query('INSERT INTO agent SET ?', formData, (error, results) => {
+  //     if (error) {
+  //       console.error('Erreur lors de l\'enregistrement des données :', error);
+  //       res.status(500).json({ error: 'Erreur lors de l\'enregistrement des données' });
+  //     } else {
+  //       console.log('Données enregistrées avec succès');
+  //       res.json({ message: 'Données enregistrées avec succès' });
+  //     }
+  //   });
+  // });
+  
+
+  app.post('/AgentManage', (req, res) => {
+    // Insert the user data into the database
+    const sql = 'INSERT INTO agent (ID_Agent, FirstName_Ag, LastName_Ag, Email_Ag, Adress_Ag, Desk_Ag, Phone_Ag, Status_Ag, Unit_Ag, Language_Ag, Password_Ag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [
+      req.body.ID_Agent ,
+      req.body.FirstName_Ag ,
+      req.body.LastName_Ag ,
+      req.body.Email_Ag ,
+      req.body.Adress_Ag ,
+      req.body.Desk_Ag ,
+      req.body.Phone_Ag ,
+      req.body.Status_Ag ,
+      req.body.Unit_Ag ,
+      req.body.Language_Ag ,
+      req.body.Password_Ag ,
+    ];
+    db.query(sql, values, (err, result) => {
+      if (err) res.json("there is an error");
+        return res.Status(200).json({message:"done"});
+    });
+  });
 
 
+
+   app.post('/DeskManage', (req, res) => {
+    // Insert the desk data into the database
+    const sql = 'INSERT INTO desk (ID_Agent, FirstName_Ag, LastName_Ag, Email_Ag, Adress_Ag, Desk_Ag, Phone_Ag, Status_Ag, Unit_Ag, Language_Ag, Password_Ag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [
+      req.body.ID_Agent ,
+      req.body.FirstName_Ag ,
+      req.body.LastName_Ag ,
+      req.body.Email_Ag ,
+      req.body.Adress_Ag ,
+      req.body.Desk_Ag ,
+      req.body.Phone_Ag ,
+      req.body.Status_Ag ,
+      req.body.Unit_Ag ,
+      req.body.Language_Ag ,
+      req.body.Password_Ag ,
+    ];
+    db.query(sql, values, (err, result) => {
+      if (err) res.json("there is an error");
+        return res.json("desk has been created successfully");
+    });
+  });
+  // ---------------------AFFICHE LA LISTE DES AGENTS ,DES USERS ET DES EMPLOYES ----------------------------------------
+  app.get("/UserList", (req, res)=>{
+    const q = "SELECT * FROM user "  
+    db.query(q,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+  })
+
+  app.get("/AgentList", (req, res)=>{
+    const q = "SELECT * FROM agent "  
+    db.query(q,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+  })
+
+  app.get("/RHReport", (req, res)=>{
+    const q = "SELECT * FROM employee "  
+    db.query(q,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+  })
+  // --------------------------get element by ID---------------------------------------------------
   app.get('/RHAdmin/:ID_Emp', (req, res) => {
     const ID_Emp = req.params.ID_Emp;
     const sql = `SELECT FirstName_Emp,LastName_Emp,Email_Emp,NID,Manager_Emp FROM employee WHERE id = ${ID_Emp}`;
@@ -90,55 +206,3 @@ app.get("/test", (req, res)=>{
     });
   });
 
-
-  app.get("/RHReport", (req, res)=>{
-    const q = "SELECT * FROM employee "  
-    db.query(q,(err,data)=>{
-        if(err) return res.json(err)
-        return res.json(data)
-    })
-  })
-  app.get("/AgentList", (req, res)=>{
-    const q = "SELECT * FROM agent "  
-    db.query(q,(err,data)=>{
-        if(err) return res.json(err)
-        return res.json(data)
-    })
-  })
-
-
-  app.post('/AgentManage', (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
-  
-    // Insert the user data into the database
-    const sql = 'INSERT INTO employee (ID_Agent, FirstName_Ag, LastName_Ag, Email_Ag, Adress_Ag, Phone_Ag, Desk_Ag, Status_Ag, Unit_Ag, Language_Ag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [ID_Agent, FirstName_Ag, LastName_Ag, Email_Ag, Adress_Ag, Phone_Ag, Desk_Ag, Status_Ag, Unit_Ag, Language_Ag];
-    db.query(sql, values, (err, result) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send('Error creating agent');
-      }
-      console.log('Agent created successfully');
-      res.send('Agent created successfully');
-    });
-  });
-  
-
-
-  app.get("/AgentManage", (req, res)=>{
-    const q = "SELECT * FROM agent "  
-    db.query(q,(err,data)=>{
-        if(err) return res.json(err)
-        return res.json(data)
-    })
-  })
-
-  app.get("/UserList", (req, res)=>{
-    const q = "SELECT * FROM user "  
-    db.query(q,(err,data)=>{
-        if(err) return res.json(err)
-        return res.json(data)
-    })
-  })
-
- 

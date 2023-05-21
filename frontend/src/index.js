@@ -11,21 +11,36 @@ import AgentList from './Pages/AgentList';
 import DeskManage from './Pages/DeskManage';
 import RHAdmin from './Pages/RHAdmin';
 import RHReport from './Pages/RHReport';
+import AgentRequest from './Pages/AgentRequest';
+import AgentProfil from  './Pages/AgentProfil';
+import EmpList from  './Pages/EmpList';
 
 
 
 const router = createBrowserRouter([
-{ path: "/Login",
+{ path: "/",
 element: <Login></Login>,
 errorElement: <h1>Sorry .......</h1>,
 },
 
-{ path: "/",
+{ path: "/AgentRequest",
+element: <AgentRequest></AgentRequest>, 
+},
+
+{ path: "/AgentProfil",
+element: <AgentProfil></AgentProfil>, 
+},
+{ path: "/EmpList",
+element: <EmpList></EmpList>, 
+},
+
+{ path: "/AdminProfil",
 element: <AdminProfil></AdminProfil>, 
 },
 { path: "/UserManage",
 element: <UserManage></UserManage>,
 },
+
 { path: "/UserList",
 element: <UserList></UserList>,
 },
@@ -33,6 +48,7 @@ element: <UserList></UserList>,
 { path: "/AgentManage",
 element: <AgentManage></AgentManage>,
 },
+
 { path: "/AgentList",
 element: <AgentList></AgentList>,
 },
@@ -48,7 +64,6 @@ element: <DeskManage></DeskManage>,
 { path: "/RHReport",
 element: <RHReport></RHReport>, 
 },
-
 
 ]);
 

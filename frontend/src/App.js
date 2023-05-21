@@ -9,14 +9,15 @@ import AgentList from './Pages/AgentList';
 import DeskManage from './Pages/DeskManage';
 import RHAdmin from './Pages/RHAdmin';
 import RHReport from './Pages/RHReport';
-
+import AgentRequest from './Pages/AgentRequest';
+import EmpList from './Pages/EmpList';
 
 function App() {
     return (
         <div className='App'>
             <Routes>
-                <Route path='/' element={<AdminProfil></AdminProfil>} />
-                <Route path='/Login' element={<Login></Login>} />
+                <Route path='/' element={<Login></Login>} />
+                <Route path='/AdminProfil' element={<AdminProfil></AdminProfil>} />
 
                 <Route path='/UserManage' element={<UserManage></UserManage>} />
                 <Route path='/UserList' element={<UserList></UserList>} />
@@ -27,7 +28,10 @@ function App() {
                 <Route path='/RHAdmin' element={<RHAdmin></RHAdmin>} />
                 <Route path='/RHReport' element={<RHReport></RHReport>} />
 
-            
+                <Route path='/AgentRequest' element={<AgentRequest></AgentRequest>} />
+                <Route path='/AgentList' element={<AgentList></AgentList>} />
+                <Route path='/EmpList' element={<EmpList></EmpList>} />
+
 
 
             </Routes>

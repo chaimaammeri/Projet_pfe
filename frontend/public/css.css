@@ -26,7 +26,7 @@
   padding: 15px;
   opacity: 0.75s;
   }
-    .item{
+  .item{
         text-align: center;
         margin-left:13%;
         height:100px;
@@ -40,7 +40,7 @@
     }
 
   /* ----------agent manage & user manage & desk manage ------------------------------------------- */
-  .main-manage2{
+  .main-manage2, .req{
     display: grid;
     grid-template-columns: 100%;
     column-gap: 15px;
@@ -50,9 +50,9 @@
     border: rgb(153, 151, 151) solid 1px;
     border-radius: 4px;
     z-index: 1;
-    width: 78%;
+    width: 75%;
     height: 120%;
-    margin: 150px 0  5% 160px ;
+    margin: 150px 0  5% 190px ;
   }
   .main-manage2> .shadow-effect{
   /* .main-manage22> .shadow-effect  */
@@ -76,11 +76,10 @@
   .managetitle2 {
     text-align: center;
     padding-top: 8px;
-    margin-top: 2%; 
-    margin-left: 4%; /* nes pas existe dans rh ad */
+    margin-left: 4%; 
     line-height: 70px;
     font-family: 'Bauhaus93, sans-serif';
-    font-size: 2.2vw;
+    font-size: 2vw;
     letter-spacing: 1px;
     grid-column: 2/ span 1;
     height: 40px;
@@ -92,20 +91,42 @@
     column-gap: 10px;
 
   }
-  .form-floating>.form-select {background-color: rgb(251, 248, 248);}
   .manageform {
-  margin-top: 5%;
+  margin-top: 2%;
   height: 100%;
   display: inline-block;
   color: rgb(98, 98, 98);
   font-size: 13px;
   font-weight: bold; 
   } 
-  
-  .form-control{
+  /* .form-floating>.form-select {background-color: rgb(251, 248, 248);} */
+  .form-floating{
+    color: rgb(98, 98, 98);
+    font-size: 13px;
+    font-weight: bold; 
+  }
+  /* ------------new------------------------ */
+  .col-md-6 , .col-12, .col-sm-7{
+    color: rgb(98, 98, 98);
+    font-size: 13px;
+    font-weight: bold; 
+    text-align: left;
+  }
+  .form-select{
+background-color: rgb(251, 248, 248); ;
+  }
+  .shadow-effect:focus, .col-md-6>.form-select:focus,.col-sm-7>.form-select:focus {
+    box-shadow: 0 0 7px 3px rgba(153, 50, 204, 0.5);
+    border-color: rgba(153, 50, 204, 0.5) ;
+    }
+  /* .form-floating>.form-select {background-color: rgb(251, 248, 248);} */
+
+/* ---------------------------------------------------------------- */
+.form-control{
    background-color:  rgb(251, 248, 248); 
-   width: 300px;
+   width: 350px;
    font-size: 14px;
+   height: 50px;
   }
   .but{
   padding-left: 5%; 
@@ -130,7 +151,6 @@
   box-shadow: 0 0 7px 3px rgba(153, 50, 204, 0.5);
   border-color: rgba(153, 50, 204, 0.5) ;
   }
-  
 /* ------------------Admin profile-------------- */
 .adm{
   background-color: rgb(203, 201, 201);
@@ -140,8 +160,8 @@
   top:50%;
   left: 50%;
   transform:translate(-50%,-50%);
-  width: 680px;
-  height: 320px;
+  width: 720px;
+  height: 380px;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,0,0.08) 
 }
@@ -225,6 +245,7 @@ letter-spacing: 5px;
   box-shadow: 0 .4rem .8rem #0005;
   border-radius: .8rem;
   overflow: hidden;
+  width: 80%;
 }
 .main.table {
   text-align: center;
@@ -265,11 +286,11 @@ letter-spacing: 5px;
 }
 
 .table, .td, .th {
-  padding: 1rem;
+  padding: 0.6rem;
   border-collapse: collapse;
 }
 
-thead th {
+.thead .th {
   position: sticky;
   top: 0;
   left: 0;
@@ -300,4 +321,102 @@ thead th {
   bottom: 0;
   width: 100%;
 }
- 
+ /* ------------------------------AGENTreqUEST---------------------------------- */
+ .form-floating>.form-select {
+  background-color: rgb(251, 248, 248);
+  width: 300px;
+  height: 58px;
+  margin-top: 30px;
+  margin-left: 13px;
+
+}
+.shadow-effect:focus, .form-floating>.form-select:focus {
+box-shadow: 0 0 7px 3px rgba(153, 50, 204, 0.5);
+border-color: rgba(153, 50, 204, 0.5) ;
+}
+.btn-purple {
+background-color: rgb(88, 3, 88);
+border-color: rgb(88, 3, 88);
+color:  white;
+}
+
+.btn-purple:hover{
+background-color: rgb(88, 3, 88);
+border-color: rgb(88, 3, 88);
+color:  white;
+}
+
+
+.dynamic-table {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border: 0px;
+  margin-top: 0px;
+  margin-left: 3px;
+  font-size: 15px;
+  font-weight: normal;
+  width: 100%;
+}
+
+.dynamic-table tr:nth-child(even) {
+  background-color: #e2e1e1;
+}
+
+.trr {
+  height: 27px;
+  text-align: center;
+}
+
+.tdd {
+  border-bottom: 1px dashed black;
+  cursor: pointer;
+}
+
+.thh {
+  color: whitesmoke;
+  height: 23px;
+  background-color: rgb(85, 85, 85);
+  border: 0px;
+  font-size: 18px;
+}
+
+.the {
+  text-align: center;
+}
+/* input[type=text]:hover,textarea:hover,select:hover,input[type=date]:hover {
+border: 1px solid #6F2C91;
+}  */
+
+/* input[type=date]:focus ,textarea:focus,.form-control:focus,select:focus,input[type=text]:focus,.form-floating>.form-control:hover{
+background-color: #ffffff;
+color: rgb(0, 0, 0); {
+background-color: #ffffff;
+color: rgb(0, 0, 0);
+} */
+
+/* ---------agent new----------------------- */
+/* *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+} */
+.form-bod{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh ;
+}
+.container{
+  max-width: 800px;
+  padding: 28px;
+  padding: 28px;
+  margin: 0 28px;
+  box-shadow: 0 15px 20px #ABB2B9;
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0;
+}
